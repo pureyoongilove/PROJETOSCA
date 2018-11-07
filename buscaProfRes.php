@@ -178,8 +178,8 @@ $conexao = $_SESSION['con'];
                 echo "<input name='nome' type='hidden' value='" .$dados['nome']. "'>";
                 echo "<input name='cpf' type='hidden' value='" .$dados['cpf']. "'>";
                 echo "<input name='rg' type='hidden' value='" .$dados['rg']. "'>";
-                //echo "<input name='rg' type='hidden' value='" .$dados['sexo']. "'>";
-                //echo "<input name='rg' type='hidden' value='" .$dados['endereco']. "'>";
+                echo "<input name='cargo' type='hidden' value='" .$dados['cargo']. "'>";
+                echo "<input name='endereco' type='hidden' value='" .$dados['endereco']. "'>";
                 
                 echo "<input name='email' type='hidden' value='" .$dados['email']. "'>";
                 echo "<input name='telefone' type='hidden' value='" .$dados['telefone']. "'>";

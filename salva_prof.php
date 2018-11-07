@@ -6,7 +6,8 @@
     $novoTel = filter_input(INPUT_POST, 'telefone');
     $novoCpf = filter_input(INPUT_POST, 'cpf');
     $novoRg = filter_input(INPUT_POST, 'rg'); 
-
+	$novoEndereco = filter_input(INPUT_POST, 'endereco');
+	$novoCargo = filter_input(INPUT_POST, 'cargo');
     //Estabelece a conexão com o mysql
     $hostname = "localhost";
     $user = "root";
@@ -19,7 +20,7 @@
         exit;
     }
     //Executa a atualização no banco de dados
-    $sql = "UPDATE professor SET nome='" . $novoNome . "', cpf='" . $novoCpf ."', rg='" . $novoRg . "',email='" . $novoEmail ."',telefone ='".$novoTel . "' WHERE id=".$id;
+    $sql = "UPDATE professor SET nome='" . $novoNome . "', cpf='" . $novoCpf ."', rg='" . $novoRg . "',email='" . $novoEmail ."',telefone ='".$novoTel . "',endereco ='".$novoEndereco ."',cargo ='".$novoCargo ."' WHERE id=".$id;
     //$sql = "UPDATE cliente SET nome='" . $novoNome . "', email='" . $novoEmail ."',telefone ='".$novoTel . "' WHERE id=".$id;
     $update = mysqli_query($conexao, $sql);
 
