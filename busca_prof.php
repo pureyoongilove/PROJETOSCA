@@ -1,5 +1,6 @@
 <?php
-session_start();
+include ("conexao.php");
+//session_start();
 if(isset($_SESSION['adm'])){
 	//echo"bem vindo $_SESSION[adm]";
 }else{header("location:login.php");}
@@ -49,14 +50,14 @@ if(isset($_SESSION['adm'])){
 				<a>
 				  <img src="img/logoNav.png" alt="logo" style="width:20px">
 				</a>
-			<a href="#home" class="active">Home</a>			
-			<a href="buscaProf.php">Gerenciar professores</a>
+			<a href="indexProf.php" class="active">Home</a>			
+			<a href="buscaProfRes.php">Gerenciar professores</a>
 			<a href="cadProf.php">Cadastrar professores</a>
 			
 			<a href="javascript:void(0);" class="icon" onclick="myFunction()">
 				<i class="fa fa-bars"></i>
 			<div class="topnav" id="iconNav">			
-				<a href="#"><i class="fa fa-sign-out"></i> Sair</a>
+				<a href="sair.php"><i class="fa fa-sign-out"></i> Sair</a>
 			</div>	
 			</a>
 	    </div>
@@ -158,7 +159,7 @@ if(isset($_SESSION['adm'])){
                 echo "Ops.. Erro na conexão.";
                 exit;
             }*/
-        include ("conexao.php");
+        //include ("conexao.php");
 
 $conexao = $_SESSION['con'];
             //Carrega os dados
@@ -184,8 +185,8 @@ $conexao = $_SESSION['con'];
                 echo "<input name='nome' type='hidden' value='" .$dados['nome']. "'>";
                 echo "<input name='cpf' type='hidden' value='" .$dados['cpf']. "'>";
                 echo "<input name='rg' type='hidden' value='" .$dados['rg']. "'>";
-                //echo "<input name='rg' type='hidden' value='" .$dados['sexo']. "'>";
-                //echo "<input name='rg' type='hidden' value='" .$dados['endereco']. "'>";
+                echo "<input name='cargo' type='hidden' value='" .$dados['cargo']. "'>";
+                echo "<input name='endereco' type='hidden' value='" .$dados['endereco']. "'>";
                 
                 echo "<input name='email' type='hidden' value='" .$dados['email']. "'>";
                 echo "<input name='telefone' type='hidden' value='" .$dados['telefone']. "'>";
