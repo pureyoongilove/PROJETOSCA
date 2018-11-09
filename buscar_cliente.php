@@ -80,13 +80,13 @@ if(isset($_SESSION['adm'])|| isset($_SESSION['adm'])){
 				<div class="form-group col-md-6">
 				  <form class="example" action="buscar_cliente.php" style="margin:auto;max-width420px">
 					<input name="cliente" type="text" placeholder="Procurar...">
-					<button type="submit"><i class="fa fa-search"></i></button>
+					<button type="submit"><img src="img/search_icon.png" alt="Academia" width="25"></button>
 				  </form> 
 				</div>
 				<!--BOTÕES-->
 				<div class="form-group col-md-6">
 				  <div class="container" align="right">
-					<button type="button" class="btn btn-dark">Adicionar cliente <span class="fa fa-user-plus"></span></button>
+					<button type="button" class="btn btn-dark">Adicionar cliente <img src="img/adduser_icon.png" alt="Academia" width="25"></button>
 					<a href="buscar.php"><button type="button" class="btn btn-secondary">Voltar</button></a>
 		          </div>
 				</div>						 		

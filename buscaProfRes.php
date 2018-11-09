@@ -49,7 +49,7 @@
 			<a href="javascript:void(0);" class="icon" onclick="myFunction()">
 				<i class="fa fa-bars"></i>
 			<div class="topnav" id="iconNav">			
-				<a href="sair.php"><i class="fa fa-sign-out"></i> Sair</a>
+				<a href="sair.php"><img src="img/sair_icon.png" alt="Academia" width="25"> Sair</a>
 			</div>	
 			</a>
 	    </div>
@@ -75,14 +75,14 @@
 				<div class="form-group col-md-6">
 				  <form class="example" action="busca_prof.php" style="margin:auto;max-width420px">
 					<input name="cliente" type="text" placeholder="Procurar...">
-					<button type="submit"><i class="fa fa-search"></i></button>
+					<button type="submit"><img src="img/search_icon.png" alt="Academia" width="25"></button>
 				  </form> 
 				</div>
 				<!--BOTÕES-->
 				<div class="form-group col-md-6">
 				  <div class="container" align="right">
-					<a href="cadProf.php"><button type="button" class="btn btn-dark">Adicionar professor <span class="fa fa-user-plus"></span></button></a>
-					<a href="index.html"><button type="button" class="btn btn-secondary">Voltar</button></a>
+					<a href="cadProf.php"><button type="button" class="btn btn-dark">Adicionar professor <img src="img/adduser_icon.png" alt="Academia" width="25"></button></a>
+					<a href="indexAdm.php"><button type="button" class="btn btn-secondary">Voltar</button></a>
 		          </div>
 				</div>						 		
 			</div>								
@@ -183,14 +183,14 @@ $conexao = $_SESSION['con'];
                 
                 echo "<input name='email' type='hidden' value='" .$dados['email']. "'>";
                 echo "<input name='telefone' type='hidden' value='" .$dados['telefone']. "'>";
-                echo "<button type='submit' class='btn btn-success'> Editar <span class='fa fa-eye'></span></button>";
+                echo "<button type='submit' class='btn btn-success'> Editar <img src='img/edit_icon.png' alt='Academia' width='22'></button>";
                 echo "</form>";
                 echo "</td>";
                 //Formulario para vizualizar o usario
                 echo "<td>";
                 echo "<form action='visualizar_prof.php' method='post'>";
                 echo "<input name='id' type='hidden' value='" .$dados['id']. "'>";
-                echo "<button type='submit' class='btn btn-primary'> Visualizar <span class='fa fa-pencil-square-o'></span></button>";
+                echo "<button type='submit' class='btn btn-primary'> Visualizar <img src='img/view_icon.png' alt='Academia' width='22'></button>";
                 echo"</form>";
 
                 
@@ -199,7 +199,7 @@ $conexao = $_SESSION['con'];
                 echo "<td>";
                 echo "<form action='remove_prof.php' method='post'>";
                 echo "<input name='id' type='hidden' value='" .$dados['id']. "'>";
-                echo "<button type='submit' class='btn btn-danger'> Excluir <span class='fa fa-trash-o'></span></button>";
+                echo "<button type='submit' class='btn btn-danger'> Excluir <img src='img/del_icon.png' alt='Academia' width='22'></button>";
                 echo "</form>";
                 echo "</td>";
                 echo "</tr>";

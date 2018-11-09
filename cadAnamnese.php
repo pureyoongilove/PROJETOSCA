@@ -21,9 +21,9 @@
 body{
 	 background: url(img/cadastro.jpg) no-repeat 0px 0px;
 	 background-attachment: fixed;
- }
+ } 
  
-label, h2 {
+label, h2, div {
 	color:white;
 } 
 </style>	
@@ -43,7 +43,7 @@ label, h2 {
 			<a href="javascript:void(0);" class="icon" onclick="myFunction()">
 				<i class="fa fa-bars"></i>
 			<div class="topnav" id="iconNav">				
-				<a href="#"><i class="fa fa-sign-out"></i> Sair </a> 
+				<a href="sair.php"><img src="img/sair_icon.png" alt="Academia" width="25"> Sair </a> 
 			</div>	
 			</a>
 	    </div>
@@ -68,8 +68,8 @@ label, h2 {
 <form method="POST" action="cad_anamnese.php" >
   <hr/>
   <div class="row">
-    <div class="form-group col-md-5">
-      <label for="nome">Nome do Cliente</label>
+    <div class="form-group col-md-7">
+      <label for="nome">Nome do Cliente:</label>
       <input type="text" class="form-control" name="nome" required>
     </div>
 
@@ -122,13 +122,13 @@ label, h2 {
    
     </div>
 
-    <div class="form-group col-md-1">
-      <label for="peso">Peso</label>
+    <div class="form-group col-md-2">
+      <label for="peso">Peso:</label>
       <input type="text" class="form-control" name="peso" placeholder="Ex.: 50kg" id="peso" required>
     </div>
 	
-	<div class="form-group col-md-1">
-      <label for="altura">Altura</label>
+	<div class="form-group col-md-2">
+      <label for="altura">Altura:</label>
       <input type="text" class="form-control" name="altura" placeholder="Ex.: 1.70m" id="altura" required>
     </div>
   </div>
@@ -136,11 +136,11 @@ label, h2 {
 <h2>&nbsp;&nbsp;Atividades da vida diária</h2>
 <hr/> 
 <div class="row">
-<div class="form-group col-md-2">
+<div class="form-group col-md-3">
   <label for="fuma">É fumante?</label>
 		<br/><br/>
-		<input type="radio" name="fuma" value="sim"> Sim</label>  
-        <input type="radio" name="fuma" value="não"> Não</label> 	
+		<input type="radio" name="fuma" value="sim"> Sim           </label>  
+        <input type="radio" name="fuma" value="não"> Não           </label> 	
 </div>
 
 <div class="form-group col-md-3">
@@ -150,7 +150,7 @@ label, h2 {
         <input type="radio" name="bebe" value="não"> Não</label>
 </div> 
 
-<div class="form-group col-md-4">
+<div class="form-group col-md-3">
     <div class="form-group">
       	<label for="hstrab">Horário de Saída do trabalho:</label>
       	<select class="form-control">
@@ -165,16 +165,33 @@ label, h2 {
 </div>
 
 <div class="row">
+
+<script language="javascript">
+    function habilitacao(){
+      if(document.getElementById('radioSim').checked == true){
+        document.getElementById('quais').disabled = false;
+        //document.getElementById('dataFinal').disabled = false;
+      }
+	if(document.getElementById('radioSim').checked == false){
+       document.getElementById('quais').disabled = true;
+      //  document.getElementById('dataFinal').disabled = true;
+      }
+    }
+  </script>
 <div class="form-group col-md-3">
-  <label for="faz_exer">Faz exercícios?</label> 
+
+<label for="faz_exer">Faz exercícios?</label> 
 		<br/><br/>
-		<input type="radio" name="faz_exer" value="sim"> Sim</label>
-        <input type="radio" name="faz_exer" value="não"> Não</label>  	
+		<input  type="radio" name="faz_exer" value="sim" id="radioSim" onClick = "habilitacao()"> Sim</label>
+        <input type="radio" name="faz_exer" value="não" onClick = "habilitacao()"> Não</label>  	
 </div>
+ 
 
 <div class="form-group col-md-3">
-  <label for="exer_qual">Quais?</label>
-  <input type="text" class="form-control" name="exer_qual" placeholder="corrida, caminhada..." required>
+	
+ <label for="exer_qual">Quais?</label>
+ <input type="text" class="form-control" name="exer_qual" id = "quais" placeholder="corrida, caminhada..." required disabled>
+
 </div>
 
 <div class="form-group col-md-3">
@@ -362,8 +379,8 @@ label, h2 {
 	
   <div id="actions" class="row" align="right">
     <div class="col-md-12">
-      <button class="btn btn-success btn-xs" type="submit" name="enviar"> Salvar <span class="fa fa-check"></span></button>
-      <a href="buscar.php"><button type="button" class="btn btn-danger btn-xs"> Calcelar <span class="fa fa-times"></span></button><a/>
+      <button class="btn btn-success btn-xs" type="submit" name="enviar"> Salvar <img src="img/ok_icon.png" alt="Academia" width="25"></button>
+      <a href="buscar.php"><button type="button" class="btn btn-danger btn-xs"> Calcelar <img src="img/cancel_icon.png" alt="Academia" width="18"></button><a/>
     </div>
   </div>				
 				

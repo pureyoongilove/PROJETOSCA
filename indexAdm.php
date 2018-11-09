@@ -43,7 +43,7 @@ if(isset($_SESSION['adm'])){
 			<a href="javascript:void(0);" class="icon" onclick="myFunction()">
 				<i class="fa fa-bars"></i>	
 			<div class="topnav" id="iconNav">			
-				<a href="sair.php"><i class="fa fa-sign-out"></i> Sair</a>
+				<a href="sair.php"><img src="img/sair_icon.png" alt="Academia" width="25"> Sair</a>
 			</div>	
 			</a>
 	    </div>
@@ -145,15 +145,15 @@ if(isset($_SESSION['adm'])){
 		<div>
 			<div class="contact-info">
 			 <div class="footer-style-w3ls">
-				<h4 class="text-dark mb-2"><i class="fa fa-phone" style="font-size:20px;color:black"></i> Telefone</h4>
+				<h4 class="text-dark mb-2"><img src="img/tel_icon.png" alt="Academia" width="25"> Telefone</h4>
 				<p>(35) 3651-3113</p>
 			</div>
 			<div class="footer-style-w3ls my-4">
-			   <h4 class="text-dark mb-2"><i class="fa fa-facebook-official" style="font-size:20px;color:black"></i> Facebook</h4>
+			   <h4 class="text-dark mb-2"><img src="img/fb_icon.png" alt="Academia" width="25"> Facebook</h4>
 			   <p><a id="social"  href="https://www.facebook.com/academiaparaisofitness/" target="_blank">Academia Fitness Ana Carvalho</a></p>
 			</div>
 			<div class="footer-style-w3ls">
-				<h4 class="text-dark mb-2"><i class="fa fa-map-marker" style="font-size:20px;color:black"></i> Localização</h4>
+				<h4 class="text-dark mb-2"><img src="img/map_icon.png" alt="Academia" width="25"> Localização</h4>
 				<p>Rua Cel. Francisco Granado, 915 - Centro (0,77 km)</p>
 				<p>37660-000 Paraisópolis</p>
 			</div>

@@ -63,7 +63,7 @@ tr {
 			<a href="javascript:void(0);" class="icon" onclick="myFunction()">
 				<i class="fa fa-bars"></i>
 			<div class="topnav" id="iconNav">			
-				<a href="sair.php"><i class="fa fa-sign-out"></i> Sair</a>
+				<a href="sair.php"><img src="img/sair_icon.png" alt="Academia" width="25"> Sair</a>
 			</div>	
 			</a>
 	    </div>
@@ -293,10 +293,9 @@ tr {
 			
 			<br/><br/><br/>
 			<div id="actions" class="row" align="right">
-			<div class="col-md-11">
-			<button type="submit" class="btn btn-success btn-xs"> Salvar <span class="fa fa-check"></span></button>
-			<a href="buscar.php"><button type="button" class="btn btn-secondary">Voltar</button></a>
-			<a href="ficha.php"><button type="button" class="btn btn-secondary">Criar ficha</button></a>
+			<div class="col-md-11">			
+			<a href="buscar.php"><button type="button" class="btn btn-secondary">Voltar <img src="img/voltar_icon.png" alt="Academia" width="25"></button></a>
+			<a href="ficha.php"><button type="button" class="btn btn-danger">Criar ficha <img src="img/ficha_icon.png" alt="Academia" width="25"></button></a>
 			</div>
 			</div>
                    

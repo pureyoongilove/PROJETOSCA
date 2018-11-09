@@ -56,7 +56,7 @@ tr {
 			<a href="javascript:void(0);" class="icon" onclick="myFunction()">
 				<i class="fa fa-bars"></i>
 			<div class="topnav" id="iconNav">				
-				<a href="#"><i class="fa fa-sign-out"></i> Sair </a> 
+				<a href="sair.php"><img src="img/sair_icon.png" alt="Academia" width="25"> Sair </a> 
 			</div>	
 			</a>
 	    </div>
@@ -239,8 +239,8 @@ $id = $_SESSION['id'];
 		
   <div id="actions" class="row" align="right">
     <div class="col-md-12"> 
-      <button class="btn btn-success btn-xs" type="submit" name="enviar"> Salvar <span class="fa fa-check"></span></button>	
-      <a href="buscar.php"><button type="button" class="btn btn-dark btn-xs"> Voltar <span class="fa fa-times"></span></button><a/>
+      <a href="buscar.php"><button type="button" class="btn btn-dark btn-xs"> Voltar <img src="img/voltar_icon.png" alt="Academia" width="25"></button><a/>
+	  <button class="btn btn-success btn-xs" type="submit" name="enviar"> Salvar <img src="img/ok_icon.png" alt="Academia" width="25"></button>	      
     </div>
   </div>					
 			

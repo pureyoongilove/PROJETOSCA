@@ -50,7 +50,7 @@ label, h2 {
 			<a href="javascript:void(0);" class="icon" onclick="myFunction()">
 				<i class="fa fa-bars"></i>
 			<div class="topnav" id="iconNav">				
-				<a href="sair.php"><i class="fa fa-sign-out"></i> Sair </a> 
+				<a href="sair.php"><img src="img/sair_icon.png" alt="Academia" width="25"> Sair </a> 
 			</div>	
 			</a>
 	    </div>
@@ -134,8 +134,8 @@ label, h2 {
   
   <div id="actions" class="row" align="right">
     <div class="col-md-12">
-      <button class="btn btn-success btn-xs" type="submit" name="enviar"> Salvar <span class="fa fa-check"></span></button>
-      <a href="busca_prof.php"><button type="button" class="btn btn-danger btn-xs"> Calcelar <span class="fa fa-times"></span></button><a/>
+      <button class="btn btn-success btn-xs" type="submit" name="enviar"> Adicionar professor <img src="img/ok_icon.png" alt="Academia" width="25"></button>
+      <a href="busca_prof.php"><button type="button" class="btn btn-danger btn-xs"> Calcelar <img src="img/cancel_icon.png" alt="Academia" width="18"></button></a>
     </div>
   </div>
   
