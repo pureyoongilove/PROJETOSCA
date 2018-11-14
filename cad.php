@@ -24,7 +24,7 @@ date_default_timezone_set('America/Sao_Paulo');
     $query = "INSERT INTO cliente (nome, cpf,rg,data_nas, sexo, endereco, email, telefone,data_cadastro, senha) "
             . "VALUES( '$nome', '$cpf', '$rg',  '$data_nas', '$sexo', '$endereco', '$email', '$telefone','$data', '$senha')";
     
-    $query2= "INSERT INTO cliente (cpf, senha, privilegio) VALUES ('$cpf','$senha',1)";
+    $query2= "INSERT INTO login (cpf, senha, privilegio) VALUES ('$cpf','$senha',1)";
     
     
     $sql = mysqli_query($con,$query);

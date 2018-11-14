@@ -18,21 +18,13 @@
 	 <meta name="viewport" content="width=device-width, initial-scale=1">
 	 
 <style type="text/css">
-        *{
-            margin: 0;
-            padding: 0;
-        }
-        table{
-            padding: 1em
-        }
-        td{
-            font-size: 1em;
-            padding: 33px
-        }
-        button{
-            padding: 0px
-        }
-    </style>
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid #ddd;
+}
+</style>
 	 
 </head>
 
@@ -42,7 +34,7 @@
 				<a>
 				  <img src="img/logoNav.png" alt="logo" style="width:20px">
 				</a>
-			<a href="#home" class="active">Home</a>			
+			<a href="indexAdm.php" class="active">Home</a>			
 			<a href="buscaProf.php">Gerenciar professores</a>
 			<a href="cadProf.php">Cadastrar professores</a>
 			
@@ -91,17 +83,17 @@
 		
 		<!---------------------------- LISTA CLIENTES ---------------------------->
 		
-		<div class="container">         
-					  
+		<div style="overflow-x:auto;">
+		<div class="container">         					  
             <table class="table table-dark table-hover">
                 <thead class="thead-dark">
                   <tr>                  
                     <th>NOME</th>					
                     <th>EMAIL</th>
 					<th>TELEFONE</th>	
-					<th>EDITAR</th>
-					<th>VISUALIZAR</th>
-					<th>EXCLUIR</th>
+					<th></th>
+					<th></th>
+					<th></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -209,6 +201,7 @@ $conexao = $_SESSION['con'];
    </tbody>
               </table>            
         </div>
+		</div>
 		
 		<script src="jquery/dist/jquery.js"></script>
         <script src="popper.js/dist/popper.min.js"></script>

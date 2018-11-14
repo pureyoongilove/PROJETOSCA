@@ -52,7 +52,8 @@ tr {
 			<a href="#home" class="active">Home</a>			
 			<a href="buscar.php">Gerenciar alunos</a>
 			<a href="cadAnamnese.php">Criar anamnese</a>
-			<a href="cadFicha.php">Criar ficha</a>
+			<a href="lista_pagamento.php">Pagamentos</a>
+			<a href="inadimplentes.php">Alunos inadimplentes</a>
 			<a href="javascript:void(0);" class="icon" onclick="myFunction()">
 				<i class="fa fa-bars"></i>
 			<div class="topnav" id="iconNav">				
@@ -124,7 +125,7 @@ $id = $_SESSION['id'];
 
 ?>
         <?php
-        $sqlprof = "SELECT * FROM ficha INNER JOIN professor ON ficha.id_professor = professor.id";
+        //$sqlprof = "SELECT * FROM ficha INNER JOIN professor ON ficha.id_professor = professor.id";
         $sqlFicha = "SELECT * FROM ficha WHERE `ficha`.`bloco` = 1 AND `ficha`.`usuario` = '$id'";
                 $fic = mysqli_query($con,$sqlFicha);
                 
@@ -239,7 +240,7 @@ $id = $_SESSION['id'];
 		
   <div id="actions" class="row" align="right">
     <div class="col-md-12"> 
-      <a href="buscar.php"><button type="button" class="btn btn-dark btn-xs"> Voltar <img src="img/voltar_icon.png" alt="Academia" width="25"></button><a/>
+      <a href="buscar.php"><button type="button" class="btn btn-dark btn-xs"><img src="img/voltar_icon.png" alt="Academia" width="25"> Voltar </button><a/>
 	  <button class="btn btn-success btn-xs" type="submit" name="enviar"> Salvar <img src="img/ok_icon.png" alt="Academia" width="25"></button>	      
     </div>
   </div>					

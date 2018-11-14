@@ -49,10 +49,9 @@ label, h2 {
 				<a>
 				  <img src="img/logoNav.png" alt="logo" style="width:20px">
 				</a>
-			<a href="#home" class="active">Home</a>			
-			<a href="buscaProf.php">Gerenciar professores</a>
+			<a href="indexAdm.php" class="active">Home</a>			
+			<a href="busca_prof.php">Gerenciar professores</a>
 			<a href="cadProf.php">Cadastrar professores</a>
-			
 			<a href="javascript:void(0);" class="icon" onclick="myFunction()">
 				<i class="fa fa-bars"></i>
 			<div class="topnav" id="iconNav">			

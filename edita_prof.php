@@ -47,8 +47,8 @@ label, h2 {
 				<a>
 				  <img src="img/logoNav.png" alt="logo" style="width:20px">
 				</a>
-			<a href="indexProf.php" class="active">Home</a>			
-			<a href="buscaProfRes.php">Gerenciar professores</a>
+			<a href="indexAdm.php" class="active">Home</a>			
+			<a href="busca_prof.php">Gerenciar professores</a>
 			<a href="cadProf.php">Cadastrar professores</a>
 			
 			<a href="javascript:void(0);" class="icon" onclick="myFunction()">
@@ -131,7 +131,7 @@ label, h2 {
 			
 			<div id="actions" class="row" align="right">
 			<div class="col-md-12">
-			<a href="busca_prof.php"><button type="button" class="btn btn-dark btn-xs"> Voltar <img src="img/voltar_icon.png" alt="Academia" width="25"></button><a/>
+			<a href="busca_prof.php"><button type="button" class="btn btn-dark btn-xs"><img src="img/voltar_icon.png" alt="Academia" width="25"> Voltar </button><a/>
 			<button class="btn btn-success btn-xs" type="submit" name="enviar"> Salvar <img src="img/ok_icon.png" alt="Academia" width="25"></button>	    			
 			</div>
 			</div>

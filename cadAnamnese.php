@@ -40,6 +40,8 @@ label, h2, div {
 			<a href="#home" class="active">Home</a>			
 			<a href="buscar.php">Gerenciar alunos</a>
 			<a href="cadAnamnese.php">Criar anamnese</a>
+			<a href="lista_pagamento.php">Pagamentos</a>
+			<a href="inadimplentes.php">Alunos inadimplentes</a>
 			<a href="javascript:void(0);" class="icon" onclick="myFunction()">
 				<i class="fa fa-bars"></i>
 			<div class="topnav" id="iconNav">				
@@ -63,84 +65,30 @@ label, h2, div {
 		<!---------------------------- FORMULARIO ---------------------------->
 
 <br/> 
-<h2>&nbsp;&nbsp;Ficha da Anamnese: Identificação</h2>
-
+<h2>&nbsp;&nbsp;Ficha da Anamnese: Identificação <img src="img/id_icon.png" alt="Academia" width="35"></h2>
+<hr/>
 <form method="POST" action="cad_anamnese.php" >
   <hr/>
   <div class="row">
-    <div class="form-group col-md-7">
-      <label for="nome">Nome do Cliente:</label>
-      <input type="text" class="form-control" name="nome" required>
-    </div>
-
-    <div class="form-group col-md-1">
-
-    <div class="form-group">
-      	<label for="idade">Idade:</label>
-      	<select class="form-control">
-        	<option name="idade">12</option>
-        	<option name="idade">12</option>
-        	<option name="idade">14</option>
-        	<option name="idade">15</option>
-			<option name="idade">16</option>
-			<option name="idade">17</option>
-			<option name="idade">18</option>
-			<option name="idade">19</option>
-			<option name="idade">20</option>
-			<option name="idade">21</option>
-			<option name="idade">22</option>
-			<option name="idade">23</option>
-			<option name="idade">24</option>
-			<option name="idade">25</option>
-			<option name="idade">26</option>
-			<option name="idade">27</option>
-			<option name="idade">28</option>
-			<option name="idade">29</option>
-			<option name="idade">30</option>
-			<option name="idade">31</option>
-			<option name="idade">32</option>
-			<option name="idade">33</option>
-			<option name="idade">34</option>
-			<option name="idade">35</option>
-			<option name="idade">36</option>
-			<option name="idade">37</option>
-			<option name="idade">38</option>
-			<option name="idade">39</option>
-			<option name="idade">40</option>
-			<option name="idade">41</option>
-			<option name="idade">42</option>
-			<option name="idade">43</option>
-			<option name="idade">44</option>
-			<option name="idade">45</option>
-			<option name="idade">46</option>
-			<option name="idade">47</option>
-			<option name="idade">48</option>
-			<option name="idade">49</option>
-			<option name="idade">50 ou mais</option>
-      		</select>
-    	</div>
-   
-    </div>
-
-    <div class="form-group col-md-2">
+    <div class="form-group col-md-5">
       <label for="peso">Peso:</label>
       <input type="text" class="form-control" name="peso" placeholder="Ex.: 50kg" id="peso" required>
     </div>
 	
-	<div class="form-group col-md-2">
+	<div class="form-group col-md-5">
       <label for="altura">Altura:</label>
       <input type="text" class="form-control" name="altura" placeholder="Ex.: 1.70m" id="altura" required>
     </div>
   </div>
   <br/><br/> 
-<h2>&nbsp;&nbsp;Atividades da vida diária</h2>
+<h2>&nbsp;&nbsp;Atividades da vida diária <img src="img/temp_icon.png" alt="Academia" width="35"></h2>
 <hr/> 
 <div class="row">
 <div class="form-group col-md-3">
   <label for="fuma">É fumante?</label>
 		<br/><br/>
-		<input type="radio" name="fuma" value="sim"> Sim           </label>  
-        <input type="radio" name="fuma" value="não"> Não           </label> 	
+		<input type="radio" name="fuma" value="sim"> Sim </label>  
+        <input type="radio" name="fuma" value="não"> Não </label> 	
 </div>
 
 <div class="form-group col-md-3">
@@ -164,8 +112,6 @@ label, h2, div {
 </div> 
 </div>
 
-<div class="row">
-
 <script language="javascript">
     function habilitacao(){
       if(document.getElementById('radioSim').checked == true){
@@ -177,7 +123,106 @@ label, h2, div {
       //  document.getElementById('dataFinal').disabled = true;
       }
     }
-  </script>
+</script>
+
+<script language="javascript">
+    function habilitacao2(){
+      if(document.getElementById('radioSim2').checked == true){
+        document.getElementById('quais2').disabled = false;
+        //document.getElementById('dataFinal').disabled = false;
+      }
+	if(document.getElementById('radioSim2').checked == false){
+       document.getElementById('quais2').disabled = true;
+      //  document.getElementById('dataFinal').disabled = true;
+      }
+    }
+</script>
+
+<script language="javascript">
+    function habilitacao3(){
+      if(document.getElementById('radioSim3').checked == true){
+        document.getElementById('quais3').disabled = false;
+        //document.getElementById('dataFinal').disabled = false;
+      }
+	if(document.getElementById('radioSim3').checked == false){
+       document.getElementById('quais3').disabled = true;
+      //  document.getElementById('dataFinal').disabled = true;
+      }
+    }
+</script>
+
+<script language="javascript">
+    function habilitacao4(){
+      if(document.getElementById('radioSim4').checked == true){
+        document.getElementById('quais4').disabled = false;
+        //document.getElementById('dataFinal').disabled = false;
+      }
+	if(document.getElementById('radioSim4').checked == false){
+       document.getElementById('quais4').disabled = true;
+      //  document.getElementById('dataFinal').disabled = true;
+      }
+    }
+</script>
+
+<script language="javascript">
+    function habilitacao5(){
+      if(document.getElementById('radioSim5').checked == true){
+        document.getElementById('quais5').disabled = false;
+        //document.getElementById('dataFinal').disabled = false;
+        document.getElementById('quais51').disabled = false;
+      }
+	if(document.getElementById('radioSim5').checked == false){
+       document.getElementById('quais5').disabled = true;
+      //  document.getElementById('dataFinal').disabled = true;
+      document.getElementById('quais51').disabled = true;
+      }
+    }
+</script>
+
+<script language="javascript">
+    function habilitacao6(){
+      if(document.getElementById('radioSim6').checked == true){
+        document.getElementById('quais6').disabled = false;
+        //document.getElementById('dataFinal').disabled = false;
+        document.getElementById('quais61').disabled = false;
+      }
+	if(document.getElementById('radioSim6').checked == false){
+       document.getElementById('quais6').disabled = true;
+      //  document.getElementById('dataFinal').disabled = true;
+      document.getElementById('quais61').disabled = true;
+      }
+    }
+</script>
+
+
+
+<script language="javascript">
+    function habilitacao7(){
+      if(document.getElementById('radioSim7').checked == true){
+        document.getElementById('quais7').disabled = false;
+        //document.getElementById('dataFinal').disabled = false;
+      }
+	if(document.getElementById('radioSim7').checked == false){
+       document.getElementById('quais7').disabled = true;
+      //  document.getElementById('dataFinal').disabled = true;
+      }
+    }
+</script>
+
+<script language="javascript">
+    function habilitacao8(){
+      if(document.getElementById('radioSim8').checked == true){
+        document.getElementById('quais8').disabled = false;
+        //document.getElementById('dataFinal').disabled = false;
+      }
+	if(document.getElementById('radioSim8').checked == false){
+       document.getElementById('quais8').disabled = true;
+      //  document.getElementById('dataFinal').disabled = true;
+      }
+    }
+</script>
+
+<div class="row">
 <div class="form-group col-md-3">
 
 <label for="faz_exer">Faz exercícios?</label> 
@@ -211,19 +256,19 @@ label, h2, div {
 </div>
 <br/><br/> 
 
-<h2>&nbsp;&nbsp;Histórico médico</h2>
+<h2>&nbsp;&nbsp;Histórico médico <img src="img/heart_icon.png" alt="Academia" width="40"></h2>
 <hr/>  
 <div class="row">
 <div class="form-group col-md-3">
   <label for="problema_familia">Possui alguém com problemas cardíacos na família?</label>  
 		<br/><br/>
-		<input type="radio" name="problema_familia" value="sim"> Sim</label>   
-        <input type="radio" name="problema_familia" value="não"> Não</label> 	
+		<input type="radio" name="problema_familia" value="sim" id="radioSim2" onClick = "habilitacao2()"> Sim</label>   
+        <input type="radio" name="problema_familia" value="não" onClick = "habilitacao2()"> Não</label> 	
 </div>
 
 <div class="form-group col-md-5">
   <label for="familia_qual">Quem?</label>
-  <input type="text" class="form-control" name="familia_qual" required>
+  <input type="text" class="form-control" name="familia_qual" id="quais2" required disabled>
 </div>
 </div>
 
@@ -231,13 +276,13 @@ label, h2, div {
 <div class="form-group col-md-3">
   <label for="doenca">Possui alguma doença?</label>
 		<br/><br/>
-		<input type="radio" name="doenca" value="sim"> Sim</label>
-        <input type="radio" name="doenca" value="não"> Não</label> 
+		<input type="radio" name="doenca" value="sim" id="radioSim3" onClick = "habilitacao3()"> Sim</label>
+        <input type="radio" name="doenca" value="não" onClick = "habilitacao3()"> Não</label> 
 </div>
 
 <div class="form-group col-md-5">
   <label for="doenca_qual">Qual?</label>
-  <input type="text" class="form-control" name="doenca_qual" placeholder="anemia, " required>
+  <input type="text" class="form-control" name="doenca_qual" id="quais3" required disabled>
 </div>
 </div>
  
@@ -245,13 +290,13 @@ label, h2, div {
 <div class="form-group col-md-3">
   <label for="cirurgia">Já fez alguma cirurgia?</label> 
 		<br/><br/>
-		<input type="radio" name="cirurgia" value="sim"> Sim</label>
-        <input type="radio" name="cirurgia" value="não"> Não</label>
+		<input type="radio" name="cirurgia" value="sim" id="radioSim4" onClick = "habilitacao4()"> Sim</label>
+        <input type="radio" name="cirurgia" value="não" onClick = "habilitacao4()"> Não</label>
 </div>
 
 <div class="form-group col-md-5">
   <label for="cirurgia_qual">Qual?</label>
-  <input type="text" class="form-control" name="cirurgia_qual" required>
+  <input type="text" class="form-control" name="cirurgia_qual" id="quais4" required disabled>
 </div>
 </div>
 
@@ -259,26 +304,25 @@ label, h2, div {
 <div class="form-group col-md-2">
   <label for="medicamento">Faz uso de medicamentos?</label>
 		<br/><br/>
-		<input type="radio" name="medicamento" value="sim"> Sim</label>
-        <input type="radio" name="medicamento" value="não"> Não</label>
+		<input type="radio" name="medicamento" value="sim" id="radioSim5" onClick = "habilitacao5()"> Sim</label>
+        <input type="radio" name="medicamento" value="não" onClick = "habilitacao5()"> Não</label>
 </div>
 
 <div class="form-group col-md-2">
   <label for="medi_qual">Quais?</label>
-  <input type="text" class="form-control" name="medi_qual" required>
+  <input type="text" class="form-control" name="medi_qual" id="quais5" required disabled>
 </div>
 
-<div class="form-group col-md-2">
-    <div class="form-group">
+<div class="form-group col-md-2">  
       	<label for="medi_quant">Quantidade?</label>
-      	<select class="form-control">
+      	<select class="form-control" id="quais51" required disabled>
+          <option name="medi_quant" value=""></option>
           <option name="medi_quant" value="1">1</option>
           <option name="medi_quant" value="2">2</option>
           <option name="medi_quant" value="3">3</option>
           <option name="medi_quant"value="4">4</option>
 		  <option name="medi_quant"value="+4">+ de 4</option>       					
       	</select>     
-   </div>
 </div>
 </div> 
 </div>
@@ -294,19 +338,19 @@ label, h2, div {
 <div class="form-group col-md-2">
   <label for="dor">Sente alguma dor que impeça sua tarefas diárias?</label>
    <br/><br/>
-   <input type="radio" name="dor" value="sim"> Sim</label>
-   <input type="radio" name="dor" value="não"> Não</label>
+   <input type="radio" name="dor" value="sim" id="radioSim6" onClick = "habilitacao6()"> Sim</label>
+   <input type="radio" name="dor" value="não" onClick = "habilitacao6()"> Não</label>
 </div>
 
 
 <div class="form-group col-md-2">
   <label for="dor_qual">Qual?</label>
-  <input type="text" class="form-control" name="dor_qual" required>
+  <input type="text" class="form-control" name="dor_qual" id="quais6" required disabled>
 </div>
 
 <div class="form-group col-md-2">
   <label for="dor_local">Em que local?</label>
-  <input type="text" class="form-control" name="dor_local" required>
+  <input type="text" class="form-control" name="dor_local" id="quais61" required disabled>
 </div>
 </div> 
 
@@ -314,13 +358,13 @@ label, h2, div {
 <div class="form-group col-md-3">
   <label for="alergia">Possui alguma alergia?</label> 
 		<br/><br/>
-		<input type="radio" name="alergia" value="sim"> Sim</label>
-        <input type="radio" name="alergia" value="não"> Não</label>
+		<input type="radio" name="alergia" value="sim" id="radioSim7" onClick = "habilitacao7()"> Sim</label>
+        <input type="radio" name="alergia" value="não" onClick = "habilitacao7()"> Não</label>
 </div>
 
 <div class="form-group col-md-5">
   <label for="alergia_qual">Qual?</label>
-  <input type="text" class="form-control" name="alergia_qual" required>
+  <input type="text" class="form-control" name="alergia_qual" id="quais7" required disabled>
 </div>
 </div>
 </div>
@@ -329,20 +373,20 @@ label, h2, div {
 <div class="form-group col-md-3">
   <label for="restri_exercicio">Possui restrição a prática de exercícios?</label> 	
 		<br/><br/>
-		<input type="radio" name="restri_exercicio" value="sim"> Sim</label>
-        <input type="radio" name="restri_exercicio" value="não"> Não</label>
+		<input type="radio" name="restri_exercicio" value="sim" id="radioSim8" onClick = "habilitacao8()"> Sim</label>
+        <input type="radio" name="restri_exercicio" value="não" onClick = "habilitacao8()"> Não</label>
 </div>
 
 
 <div class="form-group col-md-5">
   <label for="restric_qual">Qual?</label>
-  <input type="text" class="form-control" name="restric_qual" required>
+  <input type="text" class="form-control" name="restric_qual" id="quais8" required disabled>
 </div>
 </div>
 </div>  
 
 <br/>
-<h2>&nbsp;&nbsp;Objetivos com relação a atividade física</h2>
+<h2>&nbsp;&nbsp;Objetivos com relação a atividade física <img src="img/atv_icon.png" alt="Academia" width="30"></h2>
 <hr/>  
 <div class="row">
 <div class="form-group col-md-10">

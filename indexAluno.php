@@ -1,8 +1,21 @@
 <?php
-session_start();
+include("conexao.php");
+//session_start();
 if(isset($_SESSION['usr'])){
 	//echo"bem vindo $_SESSION[adm]";
 }else{header("location:login.php");}
+?>
+<?php
+/*$cpf = $_SESSION['usr'];
+$conexao = $_SESSION['con'];
+$sql = "Select * from cliente where cpf = $cpf ";
+	 $info = mysqli_query ($conexao, $sql);
+	 while( $dados = mysqli_fetch_assoc($info) ){
+		 $_SESSION['nome'] = $dados['nome'];
+	$nome = $dados['nome'];
+		 }
+echo "$nome";*/
+
 ?>
 <!DOCTYPE html> 
 <html lang="pt-br">
@@ -37,8 +50,8 @@ if(isset($_SESSION['usr'])){
 				  <img src="img/logoNav.png" alt="logo" style="width:20px">
 				</a>
 			<a href="#home" class="active">Home</a>	
-			<a href="viewUserFicha.php">Consultar ficha</a>
-			<a href="viewUserAnamnese.php">Consultar anamnese</a>
+			<a href="usr_ficha.php">Consultar ficha</a>
+			<a href="visualizar_ficha.php">Consultar anamnese</a>
 			<a href="javascript:void(0);" class="icon" onclick="myFunction()">
 				<i class="fa fa-bars"></i>
 			<div class="topnav" id="iconNav">			
@@ -161,17 +174,7 @@ if(isset($_SESSION['usr'])){
 			</div>
 				
 		<div class="col-md-7 support-grid">
-	<div id="googleMap" style="width:100%;height:295px;"></div>
-		<script>
-		function myMap() {
-		var mapProp= {
-		center:new google.maps.LatLng(51.508742,-0.120850),
-		zoom:5,
-	 };
-	var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
-  }
-	   </script>
-	   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu-916DdpKAjTmJNIgngS6HL_kDIKU0aU&callback=myMap"></script>					
+		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d921.1620812621368!2d-45.780475670779666!3d-22.554842860547!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cb88e8a2e66abb%3A0x26ab22496718746f!2sAcademia+Para%C3%ADso+Fitness!5e0!3m2!1spt-BR!2sbr!4v1541792407454" width="100%" height="295px" frameborder="0" style="border:0" allowfullscreen></iframe>				
 		</div>
 		</div>
 		</div></div></div>	

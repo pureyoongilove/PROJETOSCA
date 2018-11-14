@@ -58,8 +58,9 @@ tr {
 				</a>
 			<a href="#home" class="active">Home</a>			
 			<a href="buscar.php">Gerenciar alunos</a>
-			<a href="cadAnamnese.php">Criar anamnese</a>	
-			
+			<a href="cadAnamnese.php">Criar anamnese</a>
+			<a href="lista_pagamento.php">Pagamentos</a>
+			<a href="inadimplentes.php">Alunos inadimplentes</a>								
 			<a href="javascript:void(0);" class="icon" onclick="myFunction()">
 				<i class="fa fa-bars"></i>
 			<div class="topnav" id="iconNav">			
@@ -294,8 +295,8 @@ tr {
 			<br/><br/><br/>
 			<div id="actions" class="row" align="right">
 			<div class="col-md-11">			
-			<a href="buscar.php"><button type="button" class="btn btn-secondary">Voltar <img src="img/voltar_icon.png" alt="Academia" width="25"></button></a>
-			<a href="ficha.php"><button type="button" class="btn btn-danger">Criar ficha <img src="img/ficha_icon.png" alt="Academia" width="25"></button></a>
+			<a href="buscar.php"><button type="button" class="btn btn-secondary"><img src="img/voltar_icon.png" alt="Academia" width="25"> Voltar </button></a>
+			<a href="ficha.php"><button type="button" class="btn btn-primary">Criar ficha <img src="img/ficha_icon.png" alt="Academia" width="25"></button></a>
 			</div>
 			</div>
                    

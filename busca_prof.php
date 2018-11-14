@@ -26,21 +26,13 @@ if(isset($_SESSION['adm'])){
 	 <meta name="viewport" content="width=device-width, initial-scale=1">
 	 
 <style type="text/css">
-        *{
-            margin: 0;
-            padding: 0;
-        }
-        table{
-            padding: 1em
-        }
-        td{
-            font-size: 1em;
-            padding: 33px
-        }
-        button{
-            padding: 0px
-        }
-    </style>
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid #ddd;
+}
+</style>
 	 
 </head>
 
@@ -51,7 +43,7 @@ if(isset($_SESSION['adm'])){
 				  <img src="img/logoNav.png" alt="logo" style="width:20px">
 				</a>
 			<a href="indexAdm.php" class="active">Home</a>			
-			<a href="buscaProfRes.php">Gerenciar professores</a>
+			<a href="busca_prof.php">Gerenciar professores</a>
 			<a href="cadProf.php">Cadastrar professores</a>
 			
 			<a href="javascript:void(0);" class="icon" onclick="myFunction()">
@@ -90,7 +82,7 @@ if(isset($_SESSION['adm'])){
 				<div class="form-group col-md-6">
 				  <div class="container" align="right">
 					<a href="cadProf.php"><button type="button" class="btn btn-dark">Adicionar professor <img src="img/adduser_icon.png" alt="Academia" width="25"></button></a>
-					<a href="index.html"><button type="button" class="btn btn-secondary">Voltar</button></a>
+					<a href="indexAdm.php"><button type="button" class="btn btn-secondary">Voltar</button></a>
 		          </div>
 				</div>						 		
 			</div>								
@@ -99,17 +91,17 @@ if(isset($_SESSION['adm'])){
 		
 		<!---------------------------- LISTA CLIENTES ---------------------------->
 		
-		<div class="container">         
-					  
+		<div style="overflow-x:auto;">
+		<div class="container">         					  
             <table class="table table-dark table-hover">
                 <thead class="thead-dark">
                   <tr>                  
                     <th>NOME</th>					
                     <th>EMAIL</th>
 					<th>TELEFONE</th>	
-					<th>EDITAR</th>
-					<th>VISUALIZAR</th>
-					<th>EXCLUIR</th>
+					<th></th>
+					<th></th>
+					<th></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -216,7 +208,8 @@ $conexao = $_SESSION['con'];
    </tbody>
               </table>            
         </div>
-		
+	</div>
+	
 		<script src="jquery/dist/jquery.js"></script>
         <script src="popper.js/dist/popper.min.js"></script>
         <script src="js/bootstrap.js"></script>

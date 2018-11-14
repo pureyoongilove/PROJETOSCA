@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(isset($_SESSION['adm'])|| isset($_SESSION['adm'])){
+if(isset($_SESSION['prof'])|| isset($_SESSION['adm'])){
 	//echo"bem vindo $_SESSION[adm]";
 }else{header("location:login.php");}
 ?>
@@ -24,21 +24,13 @@ if(isset($_SESSION['adm'])|| isset($_SESSION['adm'])){
 	 <meta name="viewport" content="width=device-width, initial-scale=1">
 	 
 <style type="text/css">
-        *{
-            margin: 0;
-            padding: 0;
-        }
-        table{
-            padding: 1em
-        }
-        td{
-            font-size: 1em;
-            padding: 33px
-        }
-        button{
-            padding: 0px
-        }
-    </style>
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid #ddd;
+} 
+</style>
 	 
 </head>
 
@@ -51,11 +43,12 @@ if(isset($_SESSION['adm'])|| isset($_SESSION['adm'])){
 			<a href="#home" class="active">Home</a>			
 			<a href="buscar.php">Gerenciar alunos</a>
 			<a href="cadAnamnese.php">Criar anamnese</a>	
-			
+			<a href="lista_pagamento.php">Pagamentos</a>
+			<a href="inadimplentes.php">Alunos inadimplentes</a>
 			<a href="javascript:void(0);" class="icon" onclick="myFunction()">
 				<i class="fa fa-bars"></i>
 			<div class="topnav" id="iconNav">			
-				<a href="#"><i class="fa fa-sign-out"></i> Sair</a>
+				<a href="sair.php"><img src="img/sair_icon.png" alt="Academia" width="25"> Sair</a>
 			</div>	
 			</a>
 	    </div>
@@ -96,17 +89,17 @@ if(isset($_SESSION['adm'])|| isset($_SESSION['adm'])){
 		
 		<!---------------------------- LISTA CLIENTES ---------------------------->
 		
-		<div class="container">         
-					  
+		<div style="overflow-x:auto;">
+		<div class="container">         					  
             <table class="table table-dark table-hover">
                 <thead class="thead-dark">
                   <tr>                  
                     <th>NOME</th>					
                     <th>EMAIL</th>
 					<th>TELEFONE</th>	
-					<th>VISUALIZAR</th>
-					<th>EXCLUIR</th>
-					<th>EDITAR</th>
+					<th></th>
+					<th></th>
+					<th></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -133,9 +126,15 @@ if(isset($_SESSION['adm'])|| isset($_SESSION['adm'])){
         if( isset($_GET['alteracao']) ){
             //Se alteracao tem true, os dados foram alterados
             if( $_GET['alteracao'] == "true" ){
-                echo "<p>Os dados foram alterados.</p>";            
+                echo "<div class='alert alert-success alert-dismissible fade show'>
+					<button type='button' class='close' data-dismiss='alert'>&times;</button>
+					<strong>Alteração feita com sucesso!</strong> Os dados foram alterados.
+					</div>";            
             }else{
-                echo "<p>Não foi possivel alterar os dados.</p>";
+                echo "<div class='alert alert-danger alert-dismissible fade show'>
+					<button type='button' class='close' data-dismiss='alert'>&times;</button>
+					<strong>Erro na alteração de dados!</strong> Os dados não foram alterados.
+					</div>";
             }
         } 
     ?>
@@ -179,14 +178,14 @@ if(isset($_SESSION['adm'])|| isset($_SESSION['adm'])){
                 
                 echo "<input name='email' type='hidden' value='" .$dados['email']. "'>";
                 echo "<input name='telefone' type='hidden' value='" .$dados['telefone']. "'>";
-                echo "<button type='submit' class='btn btn-success'> Editar <span class='fa fa-eye'></span></button>";
+                echo "<button type='submit' class='btn btn-success'> Editar <img src='img/edit_icon.png' alt='Academia' width='22'></button>";
                 echo "</form>";
                 echo "</td>";
                 //Formulario para vizualizar o usario
                 echo "<td>";
                 echo "<form action='visualizar.php' method='post'>";
                 echo "<input name='id' type='hidden' value='" .$dados['id']. "'>";
-                echo "<button type='submit' class='btn btn-primary'> Visualizar <span class='fa fa-pencil-square-o'></span></button>";
+                echo "<button type='submit' class='btn btn-primary'> Visualizar <img src='img/view_icon.png' alt='Academia' width='22'></button>";
                 echo"</form>";
 
                 
@@ -195,7 +194,7 @@ if(isset($_SESSION['adm'])|| isset($_SESSION['adm'])){
                 echo "<td>";
                 echo "<form action='remove.php' method='post'>";
                 echo "<input name='id' type='hidden' value='" .$dados['id']. "'>";
-                echo "<button type='submit' class='btn btn-danger'> Excluir <span class='fa fa-trash-o'></span></button>";
+                echo "<button type='submit' class='btn btn-danger'> Excluir <img src='img/del_icon.png' alt='Academia' width='22'></button>";
                 echo "</form>";
                 echo "</td>";
                 echo "</tr>";
@@ -206,6 +205,7 @@ if(isset($_SESSION['adm'])|| isset($_SESSION['adm'])){
                 </tbody>
               </table>            
         </div>
+		</div>
 		
 		<script src="jquery/dist/jquery.js"></script>
         <script src="popper.js/dist/popper.min.js"></script>

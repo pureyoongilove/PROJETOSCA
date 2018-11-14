@@ -61,7 +61,8 @@ tr {
 			<a href="#home" class="active">Home</a>			
 			<a href="buscar.php">Gerenciar alunos</a>
 			<a href="cadAnamnese.php">Criar anamnese</a>	
-			
+			<a href="lista_pagamento.php">Pagamentos</a>
+			<a href="inadimplentes.php">Alunos inadimplentes</a>
 			<a href="javascript:void(0);" class="icon" onclick="myFunction()">
 				<i class="fa fa-bars"></i>
 			<div class="topnav" id="iconNav">			
@@ -119,7 +120,7 @@ tr {
 			</div>
 			<br/>
 			<div class="row">
-			<div class="form-group col-md-2">
+			<div class="form-group col-md-3">
 			<label> RG: </label>
             <input type="text" name="rg" value="<?php echo $rg; ?>" class="form-control">
             </div>
@@ -127,7 +128,7 @@ tr {
 			<label> Telefone: </label>
             <input type="text" name="telefone" value="<?php echo $telefone; ?>" class="form-control">
             </div>
-			<div class="form-group col-md-4">
+			<div class="form-group col-md-6">
 			<label> Endereço: </label>
             <input type="text" name="endereco" value="<?php echo $endereco; ?>" class="form-control">
 			</div>
@@ -137,7 +138,7 @@ tr {
 			
 			<div id="actions" class="row" align="right">
 			<div class="col-md-12">
-			<a href="buscar.php"><button type="button" class="btn btn-secondary">Voltar <img src="img/voltar_icon.png" alt="Academia" width="25"></button></a>
+			<a href="buscar.php"><button type="button" class="btn btn-secondary"><img src="img/voltar_icon.png" alt="Academia" width="25"> Voltar </button></a>
 			<button type="submit" class="btn btn-success btn-xs"> Salvar <img src="img/ok_icon.png" alt="Academia" width="23"></button>			
 			</div>
 			</div>

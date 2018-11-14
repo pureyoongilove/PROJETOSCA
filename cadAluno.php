@@ -39,7 +39,9 @@ label, h2 {
 				</a>
 			<a href="#home" class="active">Home</a>			
 			<a href="buscar.php">Gerenciar alunos</a>
-			<a href="cadAnamnese.php">Criar anamnese</a>	
+			<a href="cadAnamnese.php">Criar anamnese</a>
+			<a href="lista_pagamento.php">Pagamentos</a>
+			<a href="inadimplentes.php">Alunos inadimplentes</a>
 			<a href="javascript:void(0);" class="icon" onclick="myFunction()">
 				<i class="fa fa-bars"></i>
 			<div class="topnav" id="iconNav">				
@@ -62,7 +64,7 @@ label, h2 {
 	
 		<!---------------------------- FORMULARIO ---------------------------->
 <br/> 
-<h2>&nbsp;&nbsp;Novo Aluno</h2>
+<h2>&nbsp;&nbsp;Novo Aluno <img src="img/adduser_icon.png" alt="Academia" width="40"></h2>
 
 <form action="cad.php" method="POST">
   <hr/>

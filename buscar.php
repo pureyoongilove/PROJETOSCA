@@ -25,20 +25,12 @@ if(isset($_SESSION['prof'])|| isset($_SESSION['adm'])){
 	 <meta name="viewport" content="width=device-width, initial-scale=1">
 	 
 <style type="text/css">
-        *{
-            margin: 0;
-            padding: 0;
-        }
-        table{
-            padding: 1em
-        }
-        td{
-            font-size: 1em;
-            padding: 30px
-        }
-        button{
-            padding: 0px
-        }
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid #ddd;
+}
 </style>
 	 
 </head>
@@ -53,7 +45,8 @@ if(isset($_SESSION['prof'])|| isset($_SESSION['adm'])){
 			<a href="indexProf.php" class="active">Home</a>			
 			<a href="buscar.php">Gerenciar alunos</a>
 			<a href="cadAnamnese.php">Criar anamnese</a>			
-			
+			<a href="lista_pagamento.php">Pagamentos</a>
+			<a href="inadimplentes.php">Alunos inadimplentes</a>
 			<a href="javascript:void(0);" class="icon" onclick="myFunction()">
 				<i class="fa fa-bars"></i>
 			<div class="topnav" id="iconNav">			
@@ -94,18 +87,19 @@ if(isset($_SESSION['prof'])|| isset($_SESSION['adm'])){
 			</div>								
         </div>
 </div>	
-	
+		
+		<div style="overflow-x:auto;">
 		<div class="container">         		  
-            <table class="table table-dark table-hover">
+            <table class="table table table-dark table-hover">
                 <thead>
                   <tr>
                     
                     <th>NOME</th>					
                     <th>EMAIL</th>
 					<th>TELEFONE</th>	
-					<th>EDITAR</th>
-					<th>VISUALIZAR</th>
-					<th>EXCLUIR</th>
+					<th></th>
+					<th></th>
+					<th></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -220,7 +214,8 @@ if(isset($_SESSION['prof'])|| isset($_SESSION['adm'])){
     </tbody>
               </table>            
         </div>
-		
+	</div>
+		 
 		<script src="jquery/dist/jquery.js"></script>
         <script src="popper.js/dist/popper.min.js"></script>
         <script src="js/bootstrap.js"></script>

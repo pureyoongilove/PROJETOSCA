@@ -31,7 +31,7 @@
 			<a href="javascript:void(0);" class="icon" onclick="myFunction()">
 				<i class="fa fa-bars"></i>
 			<div class="topnav" id="iconNav">
-				<a href="#"><i class="fa fa-fw fa-user"></i> Login </a>
+				<a href="#"><img src="img/user_icon.png" alt="Academia" width="25"> Login </a>
 				<!-- <a href="#"><i class="fa fa-sign-out"></i> Sair </a> -->
 			</div>	
 			</a>
@@ -56,13 +56,13 @@
     <form  id="login-form" method="post" action="verificar.php">
         <div class="form-group">
           <label class="label-control">
-            <span><i class="fa fa-user"></i>  Digite seu CPF</span>
+            <span><img src="img/login1_icon.png" alt="Academia" width="18">  Digite seu CPF</span>
           </label>
           <input type="text" name="user_login" class="form-control" />
         </div>
         <div class="form-group">
           <label class="label-control">
-            <span><i class="fa fa-lock"></i>  Digite sua senha</span>
+            <span><img src="img/login2_icon.png" alt="Academia" width="18">  Digite sua senha</span>
           </label> 
           <input type="password" name="user_senha" class="form-control" />
         </div>
