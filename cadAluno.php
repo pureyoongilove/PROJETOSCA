@@ -1,3 +1,10 @@
+<?php
+session_start();
+if(isset($_SESSION['prof'])|| isset($_SESSION['adm'])){
+	//echo"bem vindo $_SESSION[adm]";
+}else{header("location:login.php");}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -37,11 +44,11 @@ label, h2 {
 				<a>
 				  <img src="img/logoNav.png" alt="logo" style="width:20px">
 				</a>
-			<a href="#home" class="active">Home</a>			
-			<a href="buscar.php">Gerenciar alunos</a>
-			<a href="cadAnamnese.php">Criar anamnese</a>
-			<a href="lista_pagamento.php">Pagamentos</a>
+			<a href="indexProf.php" class="active">Home</a>			
+			<a href="buscar.php">Gerenciar alunos</a>									
 			<a href="inadimplentes.php">Alunos inadimplentes</a>
+			<a href="pagamento.php">Pagamentos</a>
+			<a href="cadAluno.php">Cadastrar aluno</a>
 			<a href="javascript:void(0);" class="icon" onclick="myFunction()">
 				<i class="fa fa-bars"></i>
 			<div class="topnav" id="iconNav">				

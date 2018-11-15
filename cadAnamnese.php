@@ -37,11 +37,11 @@ label, h2, div {
 				<a>
 				  <img src="img/logoNav.png" alt="logo" style="width:20px">
 				</a>
-			<a href="#home" class="active">Home</a>			
-			<a href="buscar.php">Gerenciar alunos</a>
-			<a href="cadAnamnese.php">Criar anamnese</a>
-			<a href="lista_pagamento.php">Pagamentos</a>
+			<a href="indexProf.php" class="active">Home</a>			
+			<a href="buscar.php">Gerenciar alunos</a>									
 			<a href="inadimplentes.php">Alunos inadimplentes</a>
+			<a href="pagamento.php">Pagamentos</a>
+			<a href="cadAluno.php">Cadastrar aluno</a>
 			<a href="javascript:void(0);" class="icon" onclick="myFunction()">
 				<i class="fa fa-bars"></i>
 			<div class="topnav" id="iconNav">				
@@ -336,7 +336,7 @@ label, h2, div {
 
 <div class="row">
 <div class="form-group col-md-2">
-  <label for="dor">Sente alguma dor que impeça sua tarefas diárias?</label>
+  <label for="dor">Sente alguma dor que impeça suas tarefas diárias?</label>
    <br/><br/>
    <input type="radio" name="dor" value="sim" id="radioSim6" onClick = "habilitacao6()"> Sim</label>
    <input type="radio" name="dor" value="não" onClick = "habilitacao6()"> Não</label>
@@ -408,7 +408,7 @@ label, h2, div {
     			</div>
 				<div class="form-check form-check-inline">
       				<label class="form-check-label" for="objetivo5">
-        				<input type="checkbox" class="form-check-input" name="objetivo5" value="Convivio Social">Convivio Social</label>
+        				<input type="checkbox" class="form-check-input" name="objetivo5" value="Convivio Social">Convívio Social</label>
     			</div>
 				<div class="form-check form-check-inline">
       				<label class="form-check-label" for="objetivo6">

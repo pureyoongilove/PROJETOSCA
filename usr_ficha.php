@@ -21,7 +21,7 @@ if(isset($_SESSION['usr'])){
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="css/bootstrap.css">	
 	<link rel="stylesheet" href="css/styleCad.css">
-	
+
 </head>
 
 	<body>
@@ -37,7 +37,7 @@ if(isset($_SESSION['usr'])){
 			<a href="javascript:void(0);" class="icon" onclick="myFunction()">
 				<i class="fa fa-bars"></i>
 			<div class="topnav" id="iconNav">				
-				<a href="sair.php"><i class="fa fa-sign-out"></i> Sair </a> 
+				<a href="sair.php"><img src="img/sair_icon.png" alt="Academia" width="25"> Sair </a> 
 			</div>	
 			</a>
 	    </div>
@@ -69,6 +69,7 @@ $vis = mysqli_query($conexao, $sql);
 while ($dados = mysqli_fetch_assoc($vis)) {
 	$id = $dados['id'];
 }
+
 $sqlFicha = "SELECT * FROM ficha WHERE `ficha`.`bloco` = 1 AND `ficha`.`usuario` = '$id'";
                 $fic = mysqli_query($con,$sqlFicha);
                 
@@ -150,6 +151,7 @@ $sqlFicha = "SELECT * FROM ficha WHERE `ficha`.`bloco` = 1 AND `ficha`.`usuario`
                 echo"</table>";
                 }
         ?>
+		
 		 <?php
                 //bloco 4
                 $sqlFicha4 = "SELECT * FROM ficha WHERE `ficha`.`bloco` = '4' AND `ficha`.`usuario` = '$id'";
@@ -178,6 +180,14 @@ $sqlFicha = "SELECT * FROM ficha WHERE `ficha`.`bloco` = 1 AND `ficha`.`usuario`
                 }
         ?>   	 
 
+		<br/>
+		
+	<div id="actions" class="row" align="right">
+		<div class="col-md-12">
+		<a href="indexAluno.php"><button type="button" class="btn btn-secondary">Voltar</button></a>
+		</div>
+	</div>	
+		
 	</body>
 	
 </html>		

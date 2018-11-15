@@ -30,6 +30,15 @@ table {
     width: 100%;
     border: 1px solid #ddd;
 } 
+
+body{
+	 background: url(img/cadastro.jpg) no-repeat 0px 0px;
+	 background-attachment: fixed;
+ }
+ 
+label, h2 {
+	color:white;
+} 
 </style>
 	 
 </head>
@@ -40,11 +49,11 @@ table {
 				<a>
 				  <img src="img/logoNav.png" alt="logo" style="width:20px">
 				</a>
-			<a href="#home" class="active">Home</a>			
-			<a href="buscar.php">Gerenciar alunos</a>
-			<a href="cadAnamnese.php">Criar anamnese</a>	
-			<a href="lista_pagamento.php">Pagamentos</a>
+			<a href="indexProf.php" class="active">Home</a>			
+			<a href="buscar.php">Gerenciar alunos</a>									
 			<a href="inadimplentes.php">Alunos inadimplentes</a>
+			<a href="pagamento.php">Pagamentos</a>
+			<a href="cadAluno.php">Cadastrar aluno</a>
 			<a href="javascript:void(0);" class="icon" onclick="myFunction()">
 				<i class="fa fa-bars"></i>
 			<div class="topnav" id="iconNav">			

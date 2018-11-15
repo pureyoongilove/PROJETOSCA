@@ -37,7 +37,7 @@ if(isset($_SESSION['usr'])){
 			<a href="javascript:void(0);" class="icon" onclick="myFunction()">
 				<i class="fa fa-bars"></i>
 			<div class="topnav" id="iconNav">				
-				<a href="sair.php"><i class="fa fa-sign-out"></i> Sair </a> 
+				<a href="sair.php"><img src="img/sair_icon.png" alt="Academia" width="25"> Sair </a> 
 			</div>	
 			</a>
 	    </div>
@@ -78,19 +78,15 @@ while ($dados = mysqli_fetch_assoc($visu)) {
 		  <br/>
 
 	<div class='row'>
-<div class='form-group col-md-3'>
+<div class='form-group col-md-2'>
   <label for='fuma'>É fumante?</label>
-		<br/><br/>
-		<input type='radio' name='fuma' value='sim'> Sim </label>  
-        <input type='radio' name='fuma' value='não'> Não </label> 	
+	<input type='text' name='fuma' value='" . $dados['fuma'] . "' class='form-control' disabled>
 </div>
 
-<div class'form-group col-md-3'>
-  <label for='bebe'>Bebe?</label>  
-		<br/><br/>  
-		<input type='radio' name='bebe' value='sim'> Sim</label>  
-        <input type='radio' name='bebe' value='não'> Não</label>
-</div> 
+<div class='form-group col-md-2'>
+  <label for='bebe'>Bebe?</label>
+	<input type='text' name='bebe' value='" . $dados['bebe'] . "' class='form-control' disabled>
+</div>
 
 <div class='form-group col-md-6'>
     <div class='form-group'>
@@ -110,20 +106,18 @@ while ($dados = mysqli_fetch_assoc($visu)) {
 <div class='form-group col-md-3'>
 
 <label for='faz_exer'>Faz exercícios?</label> 
-		<br/><br/>
-		<input  type='radio' name='faz_exer' value='sim' disabled> Sim</label>
-        <input type='radio' name='faz_exer' value='não' disabled> Não</label>  	
+	<input type='text' name='faz_exer' value='" . $dados['faz_exercicio'] . "' class='form-control' disabled>	
 </div>
  
 
-<div class='form-group col-md-3'>
+<div class='form-group col-md-5'>
 	
  <label for='exer_qual'>Quais?</label>
  <input type='text' name='exer_qual' value='" . $dados['exercicio_qual'] . "' class='form-control' disabled>
 
 </div>
 
-<div class='form-group col-md-3'>
+<div class='form-group col-md-2'>
   
     <div class='form-group'>
       	<label for='horas_sono'>Quantas horas dorme por dia?</label>
@@ -145,23 +139,19 @@ while ($dados = mysqli_fetch_assoc($visu)) {
 <div class='row'>
 <div class='form-group col-md-5'>
   <label for='problema_familia'>Possui alguém com problemas cardíacos na família?</label>  
-		<br/><br/>
-		<input type='radio' name='problema_familia' value='sim' disabled> Sim</label>   
-        <input type='radio' name='problema_familia' value='não' disabled> Não</label> 	
+	<input type='text' name='problema_familia' value='" . $dados['exercicio_qual'] . "' class='form-control' disabled>
 </div>
 
 <div class='form-group col-md-5'>
   <label for='familia_qual'>Quem?</label>
-  <input type='text' name='familia_qual' value='" . $dados['familia_qual'] . "' class='form-control' disabled>
+  <input type='text' name='familia_qual' value='" . $dados['problema_familia'] . "' class='form-control' disabled>
 </div>
 </div>
 
 <div class='row'>
 <div class='form-group col-md-5'>
   <label for='doenca'>Possui alguma doença?</label>
-		<br/><br/>
-		<input type='radio' name='doenca' value='sim' disabled> Sim</label>
-        <input type='radio' name='doenca' value='não' disabled> Não</label> 
+	<input type='text' name='doenca' value='" . $dados['doenca'] . "' class='form-control' disabled>
 </div>
 
 <div class='form-group col-md-5'>
@@ -173,9 +163,7 @@ while ($dados = mysqli_fetch_assoc($visu)) {
 <div class='row'>
 <div class='form-group col-md-5'>
   <label for='cirurgia'>Já fez alguma cirurgia?</label> 
-		<br/><br/>
-		<input type='radio' name='cirurgia' value='sim'> Sim</label>
-        <input type='radio' name='cirurgia' value='não'> Não</label>
+	<input type='text' name='cirurgia' value='" . $dados['cirurgia'] . "' class='form-control' disabled>
 </div>
 
 <div class='form-group col-md-5'>
@@ -187,9 +175,7 @@ while ($dados = mysqli_fetch_assoc($visu)) {
 <div class='row'>
 <div class='form-group col-md-2'>
   <label for='medicamento'>Faz uso de medicamentos?</label>
-		<br/><br/>
-		<input type='radio' name='medicamento' value='sim'> Sim</label>
-        <input type='radio' name='medicamento' value='não'> Não</label>
+	<input type='text' name='medicamento' value='" . $dados['medicamento'] . "' class='form-control' disabled>
 </div>
 
 <div class='form-group col-md-5'>
@@ -221,9 +207,7 @@ while ($dados = mysqli_fetch_assoc($visu)) {
 <div class='row'>
 <div class='form-group col-md-2'>
   <label for='dor'>Sente alguma dor que impeça sua tarefas diárias?</label>
-   <br/><br/>
-   <input type='radio' name='dor' value='sim'> Sim</label>
-   <input type='radio' name='dor' value='não'> Não</label>
+	<input type='text' name='dor' value='" . $dados['dor'] . "' class='form-control' disabled>
 </div>
 
 
@@ -241,9 +225,7 @@ while ($dados = mysqli_fetch_assoc($visu)) {
 <div class='row'>
 <div class='form-group col-md-5'>
   <label for='alergia'>Possui alguma alergia?</label> 
-		<br/><br/>
-		<input type='radio' name='alergia' value='sim'> Sim</label>
-        <input type='radio' name='alergia' value='não'> Não</label>
+	<input type='text' name='alergia' value='" . $dados['alergia'] . "' class='form-control' disabled>
 </div>
 
 <div class='form-group col-md-5'>
@@ -256,9 +238,7 @@ while ($dados = mysqli_fetch_assoc($visu)) {
 <div class='row'>
 <div class='form-group col-md-5'>
   <label for='restri_exercicio'>Possui restrição a prática de exercícios?</label> 	
-		<br/><br/>
-		<input type='radio' name='restri_exercicio' value='sim'> Sim</label>
-        <input type='radio' name='restri_exercicio' value='não'> Não</label>
+	<input type='text' name='restri_exercicio' value='" . $dados['restri_exerc'] . "' class='form-control' disabled>
 </div>
 
 
@@ -307,4 +287,17 @@ while ($dados = mysqli_fetch_assoc($visu)) {
 
 ";
 }
+
 ?>
+
+		<br/>
+		
+	<div id="actions" class="row" align="right">
+		<div class="col-md-12">
+		<a href="indexAluno.php"><button type="button" class="btn btn-secondary">Voltar</button></a>
+		</div>
+	</div>	
+
+</body>
+
+</html>

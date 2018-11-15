@@ -56,11 +56,11 @@ tr {
 				<a>
 				  <img src="img/logoNav.png" alt="logo" style="width:20px">
 				</a>
-			<a href="#home" class="active">Home</a>			
-			<a href="buscar.php">Gerenciar alunos</a>
-			<a href="cadAnamnese.php">Criar anamnese</a>
-			<a href="lista_pagamento.php">Pagamentos</a>
-			<a href="inadimplentes.php">Alunos inadimplentes</a>								
+			<a href="indexProf.php" class="active">Home</a>			
+			<a href="buscar.php">Gerenciar alunos</a>									
+			<a href="inadimplentes.php">Alunos inadimplentes</a>
+			<a href="pagamento.php">Pagamentos</a>
+			<a href="cadAluno.php">Cadastrar aluno</a>
 			<a href="javascript:void(0);" class="icon" onclick="myFunction()">
 				<i class="fa fa-bars"></i>
 			<div class="topnav" id="iconNav">			
@@ -81,6 +81,8 @@ tr {
 		   }
 		}
 	</script>
+	
+	<br/><br/>	
 	
         <h2>&nbsp;&nbsp;Visualizar Informações <img src="img/user_view.png" alt="Academia" width="45"></h2>		
 		<hr>
@@ -170,7 +172,7 @@ tr {
 					echo "<br/>";
                     echo"<h2>&nbsp;&nbsp;Bloco 1 Informações</h2>";
 					echo "<br/>";
-                   echo" <tr><th>Exercicio</th><th>Serie</th><th>Repetição</th><th>Carga</th><th>Bloco</th></tr>";   
+                   echo" <tr><th>Exercício</th><th>Série</th><th>Repetição</th><th>Carga</th><th>Bloco</th></tr>";   
                  while( $dados_ficha = mysqli_fetch_assoc($fic) ){   
                      echo "<tr>";
                
@@ -211,7 +213,7 @@ tr {
 					echo "<br/>";
                     echo"<h2>&nbsp;&nbsp;Bloco 2 Informações</h2>";
 					echo "<br/>";
-                   echo" <tr><th>Exercicio</th><th>Serie</th><th>Repetição</th><th>Carga</th><th>Bloco</th></tr>";   
+                   echo" <tr><th>Exercício</th><th>Série</th><th>Repetição</th><th>Carga</th><th>Bloco</th></tr>";   
                 while( $dados_ficha2 = mysqli_fetch_assoc($fic2) ){   
                      echo "<tr>";
                
@@ -242,7 +244,7 @@ tr {
 					echo "<br/>";
                     echo"<h2>&nbsp;&nbsp;Bloco 3 Informações</h2>";
 					echo "<br/>";
-                   echo" <tr><th>Exercicio</th><th>Serie</th><th>Repetição</th><th>Carga</th><th>Bloco</th></tr>";   
+                   echo" <tr><th>Exercício</th><th>Série</th><th>Repetição</th><th>Carga</th><th>Bloco</th></tr>";   
                 while( $dados_ficha3 = mysqli_fetch_assoc($fic3) ){   
                      echo "<tr>";
                
@@ -297,6 +299,7 @@ tr {
 			<div class="col-md-11">			
 			<a href="buscar.php"><button type="button" class="btn btn-secondary"><img src="img/voltar_icon.png" alt="Academia" width="25"> Voltar </button></a>
 			<a href="ficha.php"><button type="button" class="btn btn-primary">Criar ficha <img src="img/ficha_icon.png" alt="Academia" width="25"></button></a>
+			<a href="cadAnamnese.php"><button type="button" class="btn btn-primary">Criar anamnese <img src="img/ficha_icon.png" alt="Academia" width="25"></button></a>
 			</div>
 			</div>
                    

@@ -80,7 +80,7 @@
 	<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 	
 	<div class="footer">
-		<p>Sistema para Controle de Academia - 2018</p>
+		<p>Sistema para Controle de Academia - 2018 | Project by: Aline, Guilherme e Laura | IM3A</p>
 	</div>
 	
 	</body>

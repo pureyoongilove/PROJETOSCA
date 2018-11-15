@@ -36,6 +36,6 @@ date_default_timezone_set('America/Sao_Paulo');
     }
 
     //se tudo deu certo, redireciona pra exibe.php com alteracao igual a true
-    header("Location:busca.php?cadastro=true");
+    header("Location:buscar.php?cadastro=true");
 
 ?>

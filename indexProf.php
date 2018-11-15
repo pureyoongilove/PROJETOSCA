@@ -38,10 +38,10 @@ if(isset($_SESSION['prof'])){
 				  <img src="img/logoNav.png" alt="logo" style="width:20px">
 				</a>
 			<a href="indexProf.php" class="active">Home</a>			
-			<a href="buscar.php">Gerenciar alunos</a>
-			<a href="cadAnamnese.php">Criar anamnese</a>
-			<a href="lista_pagamento.php">Pagamentos</a>
+			<a href="buscar.php">Gerenciar alunos</a>									
 			<a href="inadimplentes.php">Alunos inadimplentes</a>
+			<a href="pagamento.php">Pagamentos</a>
+			<a href="cadAluno.php">Cadastrar aluno</a>
 			<a href="javascript:void(0);" class="icon" onclick="myFunction()">
 				<i class="fa fa-bars"></i>	
 			<div class="topnav" id="iconNav">			
@@ -189,7 +189,7 @@ if(isset($_SESSION['prof'])){
 	
 	<!---------------------------- FOOTER ---------------------------->	
 	<div class="footer">
-		<p>Sistema para Controle de Academia - 2018</p>
+		<p>Sistema para Controle de Academia - 2018 | Project by: Aline, Guilherme e Laura | IM3A</p>
 	</div>
 	
 	</body>

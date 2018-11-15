@@ -49,11 +49,11 @@ tr {
 				<a>
 				  <img src="img/logoNav.png" alt="logo" style="width:20px">
 				</a>
-			<a href="#home" class="active">Home</a>			
-			<a href="buscar.php">Gerenciar alunos</a>
-			<a href="cadAnamnese.php">Criar anamnese</a>
-			<a href="lista_pagamento.php">Pagamentos</a>
+			<a href="indexProf.php" class="active">Home</a>			
+			<a href="buscar.php">Gerenciar alunos</a>									
 			<a href="inadimplentes.php">Alunos inadimplentes</a>
+			<a href="pagamento.php">Pagamentos</a>
+			<a href="cadAluno.php">Cadastrar aluno</a>
 			<a href="javascript:void(0);" class="icon" onclick="myFunction()">
 				<i class="fa fa-bars"></i>
 			<div class="topnav" id="iconNav">				
@@ -133,8 +133,12 @@ $id = $_SESSION['id'];
                     
                     echo"<table class='table'>";
 					echo"<thead class='thead-dark'>";
-                    echo"<h2>&nbsp;&nbsp;Bloco 1 Informações</h2>";					
-                    echo" <tr><th>Exercicio</th><th>Serie</th><th>Repetição</th><th>Carga</th><th>Bloco</th></tr>";
+                    echo"<h2>&nbsp;&nbsp;Bloco 1 Informações</h2>";
+					echo"<form action='remove_ficha.php' method='post'>";
+					echo "<input name='bloco' type='hidden' value='1'>";
+					echo "<button>X</button>";
+					echo"</form>";
+                    echo" <tr><th>Exercicio</th><th>Serie</th><th>Repetição</th><th>Carga</th><th>Bloco</th><th>Excluir</th></tr>";
                  
 				 while( $dados_ficha = mysqli_fetch_assoc($fic) ){   
                     echo "<tr>";
@@ -144,6 +148,13 @@ $id = $_SESSION['id'];
                 echo "<td>" .$dados_ficha['repeticao']. "</td>";
                 echo "<td>" .$dados_ficha['carga']. "</td>";
                 echo "<td>" .$dados_ficha['bloco']. "</td>";
+				echo "<td>";
+				echo "<form action='remove_ficha.php' method='post'>";
+				echo "<input name='id' type='hidden' value='" .$dados_ficha['id_ficha']. "'>";
+				echo "<button>X</button>";
+				echo "</form>";
+				echo"</td>";
+				
                 echo "</tr>";
                      
                     

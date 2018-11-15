@@ -32,6 +32,15 @@ table {
     width: 100%;
     border: 1px solid #ddd;
 }
+
+body{
+	 background: url(img/cadastro.jpg) no-repeat 0px 0px;
+	 background-attachment: fixed;
+ }
+ 
+label, h2 {
+	color:white;
+} 
 </style>
 	 
 </head>
@@ -44,11 +53,10 @@ table {
 				  <img src="img/logoNav.png" alt="logo" style="width:20px">
 				</a>
 			<a href="indexProf.php" class="active">Home</a>			
-			<a href="buscar.php">Gerenciar alunos</a>
-			<a href="cadAnamnese.php">Criar anamnese</a>
+			<a href="buscar.php">Gerenciar alunos</a>			
 			<a href="lista_pagamento.php">Pagamentos</a>
 			<a href="inadimplentes.php">Alunos inadimplentes</a>
-			
+			<a href="cadAluno.php">Cadastrar aluno</a>
 			<a href="javascript:void(0);" class="icon" onclick="myFunction()">
 				<i class="fa fa-bars"></i>
 			<div class="topnav" id="iconNav">			
@@ -131,7 +139,11 @@ if(isset($_POST['botao'])){
 		 
 	 }
 	 else{
-		 echo"deu ruim";
+		 //se não existir o cliente
+		 echo "<div class='alert alert-success alert-dismissible fade show'>
+					<button type='button' class='close' data-dismiss='alert'>&times;</button>
+					<strong>Aluno não existe!</strong> Tente novamente.
+					</div>"; 
 	 }
 	// $sql1="SELECT * FROM `mensalidade` WHERE `id_cliente` = '$id'";
 	$sql1 = "SELECT * FROM `mensalidade` INNER JOIN cliente ON mensalidade.id_cliente = cliente.id AND `id` = $id";
@@ -153,7 +165,11 @@ if(isset($_POST['botao'])){
 		 }
 	}
 	else{
-		echo "errou";
+		//nao foi possivel encontrar o dado
+		echo "<div class='alert alert-success alert-dismissible fade show'>
+					<button type='button' class='close' data-dismiss='alert'>&times;</button>
+					<strong>Dados não encontrados!</strong> Tente novamente.
+					</div>"; 
 	}
 	
 	//echo "$nome";

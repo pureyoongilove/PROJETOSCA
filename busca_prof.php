@@ -32,6 +32,15 @@ table {
     width: 100%;
     border: 1px solid #ddd;
 }
+
+body{
+	 background: url(img/cadastro.jpg) no-repeat 0px 0px;
+	 background-attachment: fixed;
+ }
+ 
+label, h2 {
+	color:white;
+} 
 </style>
 	 
 </head>
