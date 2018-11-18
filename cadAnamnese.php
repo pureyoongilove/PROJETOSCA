@@ -39,8 +39,18 @@ $cond = mysqli_query($con,$sql);
 	<link rel="stylesheet" href="css/bootstrap.css">	
 	<link rel="stylesheet" href="css/styleCad.css">
 	<!------- mascara FORMULARIO ------->
-	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script> -->
+<script>
+function formatar(mascara, documento){
+  var i = documento.value.length;
+  var saida = mascara.substring(0,1);
+  var texto = mascara.substring(i)
+  
+  if (texto.substring(0,1) != saida){
+            documento.value += texto.substring(0,1);
+  }
+  
+}
+</script>
 
 <style>
 body{
@@ -100,12 +110,12 @@ label, h2, div {
   <div class="row">
     <div class="form-group col-md-5">
       <label for="peso">Peso:</label>
-      <input type="text" class="form-control" name="peso" placeholder="Ex.: 50kg" id="peso" required>
+      <input type="text" class="form-control" name="peso" placeholder="Ex.: 50kg" maxlength="5" OnKeyPress="formatar('##.##', this)" required>
     </div>
 	
 	<div class="form-group col-md-5">
       <label for="altura">Altura:</label>
-      <input type="text" class="form-control" name="altura" placeholder="Ex.: 1.70m" id="altura" required>
+      <input type="text" class="form-control" name="altura" placeholder="Ex.: 1.70m" maxlength="4" OnKeyPress="formatar('#.##', this)" required>
     </div>
   </div>
   <br/><br/> 

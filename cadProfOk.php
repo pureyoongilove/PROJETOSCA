@@ -102,7 +102,7 @@ div.alert {
   <div align='center'> 
       <br/><br/><br/>
 	  <a href='busca_prof.php'><button type='button' class='btn btn-basic btn-xs'><img src='img/voltar_icon.png' alt='Academia' width='30'> Voltar para a lista de professores</button></a>
-      <a href='cadProf.php'><button type='button' class='btn btn-secondary btn-xs'> Cadastrar novo professor <img src='img/adduser_icon.png' alt='Academia' width='22'></button></a>	    
+      <a href='cadProf.php'><button type='button' class='btn btn-secondary btn-xs'> Cadastrar novo professor <img src='img/adduser_icon.png' alt='Academia' width='30'></button></a>	    
   </div>	
 	
 	</body>

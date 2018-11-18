@@ -102,8 +102,8 @@ label, h2 {
 				<!--BOTÕES-->
 				<div class="form-group col-md-6">
 				  <div class="container" align="right">
-					<button type="button" class="btn btn-dark">Adicionar cliente <img src="img/adduser_icon.png" alt="Academia" width="25"></button>
-					<a href="buscar.php"><button type="button" class="btn btn-secondary">Voltar</button></a>
+					<button type="button" class="btn btn-dark"> Cadastrar aluno <img src="img/adduser_icon.png" alt="Academia" width="25"></button>
+					<a href="buscar.php"><button type="button" class="btn btn-secondary"> Voltar </button></a>
 		          </div>
 				</div>						 		
 			</div>								

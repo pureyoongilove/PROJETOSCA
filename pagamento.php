@@ -21,6 +21,19 @@ if(isset($_SESSION['prof'])|| isset($_SESSION['adm'])){
 	 <!------- estilo LISTA CLIENTES --------->	
      <link rel="stylesheet" href="css/bootstrap.css">
      <link rel="stylesheet" href="css/estilo.css">
+<!------- mascara FORMULARIO ------->
+<script>
+function formatar(mascara, documento){
+  var i = documento.value.length;
+  var saida = mascara.substring(0,1);
+  var texto = mascara.substring(i)
+  
+  if (texto.substring(0,1) != saida){
+            documento.value += texto.substring(0,1);
+  }
+  
+}
+</script>
 
 <style type="text/css">
 body{
@@ -117,13 +130,24 @@ z.value = v;
   
     <div class="form-group col-md-4">
       <label for="cpf">CPF:</label>
-      <input type="text" class="form-control" name="cpf" value="" required>
+      <input type="text" class="form-control" name="cpf" value="" maxlength="14" OnKeyPress="formatar('###.###.###-##', this)" required>
     </div>
 	
-     <div class="form-group col-md-4">
-      <label for="valor">VALOR:</label>   	
-      		<input type="text" class="form-control" name="valor" onkeypress="mascara(this,moeda)" required> 				
-    </div>
+    <div class="form-group col-md-4">
+    <div class="form-group">
+      	<label for="valor">Valor:</label>
+      	<select name="valor" class="form-control" required>
+          <option name="valor" value="10.00">R$10,00</option>
+          <option name="valor" value="35.00">R$35,00</option>
+		  <option name="valor" value="45.00">R$45,00</option>
+		  <option name="valor" value="65.90">R$65,90</option>
+          <option name="valor" value="75.90">R$75,90</option>
+          <option name="valor" value="85.90">R$85,90</option>
+		  <option name="valor" value="100.00">R$100,00</option>       					
+      	</select>     
+   </div>				
+   </div>
+   
  </div>
  
   <div id="actions" class="row" align="right">

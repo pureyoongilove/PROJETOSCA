@@ -105,16 +105,7 @@ label, h2 {
 				<div class="form-group col-md-6">
 				  <div class="container" align="right">
 					
-					<?php
-						if(isset($_SESSION['adm'])){
-						echo"<a href='cadAluno.php'><button type='button' class='btn btn-dark'>Cadastrar aluno <img src='img/adduser_icon.png' alt'Academia' width='25'></button></a>
-							<a href='cadProf.php'><button type='button' class='btn btn-dark'>Cadastrar professor <img src='img/adduser_icon.png' alt'Academia' width='25'></button></a>";
-						}
-						
-						if(isset($_SESSION['prof'])){
-						echo"<a href='indexAdm.php'><button type='button' class='btn btn-secondary'> Voltar </button></a>";
-						}
-					?>
+					<a href="cadAluno.php"><button type="button" class="btn btn-dark"> Cadastrar aluno <img src="img/adduser_icon.png" alt="Academia" width="25"></button></a>
 					
 					<?php
 						if(isset($_SESSION['prof'])){

@@ -104,7 +104,7 @@ div.alert {
   <div align='center'> 
       <br/><br/><br/>
 	  <a href='buscar.php'><button type='button' class='btn btn-basic btn-xs'><img src='img/voltar_icon.png' alt='Academia' width='30'> Voltar para a lista de alunos</button></a>
-      <a href='cadAluno.php'><button type='button' class='btn btn-secondary btn-xs'> Tentar novamente <img src='img/adduser_icon.png' alt='Academia' width='22'></button></a>	    
+      <a href='cadAluno.php'><button type='button' class='btn btn-secondary btn-xs'> Tentar novamente <img src='img/adduser_icon.png' alt='Academia' width='30'></button></a>	    
   </div>	
 		
 	</body>
