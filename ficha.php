@@ -18,12 +18,11 @@ if(isset($_SESSION['prof'])|| isset($_SESSION['adm'])){
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!------- estilo NAVBAR ------->
 	<link rel="stylesheet" type="text/css" href="css/style.css"/>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="css/bootstrap.css">	
 	<link rel="stylesheet" href="css/styleCad.css">
 	<!------- mascara FORMULARIO ------->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>	
+	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script> -->
 	
 <style>
 body{
@@ -49,17 +48,35 @@ tr {
 				<a>
 				  <img src="img/logoNav.png" alt="logo" style="width:20px">
 				</a>
-			<a href="indexProf.php" class="active">Home</a>			
-			<a href="buscar.php">Gerenciar alunos</a>									
-			<a href="inadimplentes.php">Alunos inadimplentes</a>
-			<a href="pagamento.php">Pagamentos</a>
-			<a href="cadAluno.php">Cadastrar aluno</a>
-			<a href="javascript:void(0);" class="icon" onclick="myFunction()">
-				<i class="fa fa-bars"></i>
-			<div class="topnav" id="iconNav">				
-				<a href="sair.php"><img src="img/sair_icon.png" alt="Academia" width="25"> Sair </a> 
-			</div>	
-			</a>
+			<?php
+			if(isset($_SESSION['adm'])){
+				echo"<a href='indexAdm.php' class='active'>Home</a>			
+			<a href='buscar.php'>Gerenciar alunos</a>
+			<a href='busca_prof.php'>Gerenciar professores</a>			
+			<a href='inadimplentes.php'>Alunos inadimplentes</a>
+			<a href='pagamento.php'>Pagamentos</a>
+			<a href='cadAluno.php'>Cadastrar aluno</a>
+			<a href='cadProf.php'>Cadastrar professor</a>
+			<a href='sair.php'><img src='img/sair_icon.png' alt='Academia' width='25'> Sair</a>
+			<a href='javascript:void(0);' class='icon' onclick='myFunction()'>
+			<img src='img/bars_icon.png' alt='Academia' width='25'>			
+			</a>";
+			}
+			if(isset($_SESSION['prof'])){
+				echo"<a href='indexProf.php' class='active'>Home</a>			
+			<a href='buscar.php'>Gerenciar alunos</a>									
+			<a href='inadimplentes.php'>Alunos inadimplentes</a>
+			<a href='pagamento.php'>Pagamentos</a>
+			<a href='cadAluno.php'>Cadastrar aluno</a>
+			<a href='javascript:void(0);' class='icon' onclick='myFunction()'>
+			<img src='img/bars_icon.png' alt='Academia' width='25'>
+			<div class='topnav' id='iconNav'>			
+				<a href='sair.php'><img src='img/sair_icon.png' alt='Academia' width='25'> Sair</a>
+			</div>
+			</a>";
+				
+			}				
+			?>
 	    </div>
 	
 	<!---------------------------- SCRIPT NAVBAR ---------------------------->
@@ -97,8 +114,8 @@ tr {
     </div>
 
 	<div class="form-group col-md-2">
-      <label for="nome">Cargo:</label>
-      <input type="text" class="form-control" name="carga" required>
+      <label for="nome">Carga:</label>
+      <input type="text" class="form-control" name="carga">
     </div>
 	
 	<div class="form-group col-md-2">
@@ -136,7 +153,8 @@ $id = $_SESSION['id'];
                     echo"<h2>&nbsp;&nbsp;Bloco 1 Informações</h2>";
 					echo"<form action='remove_ficha.php' method='post'>";
 					echo "<input name='bloco' type='hidden' value='1'>";
-					echo "<button>X</button>";
+					echo "<button class='btn btn-danger'> Deletar todo este bloco<img src='img/del_icon.png' alt='Academia' width='22'></button>";
+					echo "<br/><br/>";
 					echo"</form>";
                     echo" <tr><th>Exercicio</th><th>Serie</th><th>Repetição</th><th>Carga</th><th>Bloco</th><th>Excluir</th></tr>";
                  
@@ -151,7 +169,7 @@ $id = $_SESSION['id'];
 				echo "<td>";
 				echo "<form action='remove_ficha.php' method='post'>";
 				echo "<input name='id' type='hidden' value='" .$dados_ficha['id_ficha']. "'>";
-				echo "<button>X</button>";
+				echo "<button type='submit' class='btn btn-outline-danger'> Deletar <img src='img/cancel_icon.png' alt='Academia' width='22'></button>";
 				echo "</form>";
 				echo"</td>";
 				
@@ -173,7 +191,12 @@ $id = $_SESSION['id'];
                     echo"<table class='table'>";
 					echo"<thead class='thead-dark'>";
                     echo"<h2>&nbsp;&nbsp;Bloco 2 Informações</h2>";
-                    echo" <tr><th>Exercicio</th><th>Serie</th><th>Repetição</th><th>Carga</th><th>Bloco</th></tr>";
+                    echo"<form action='remove_ficha.php' method='post'>";
+					echo "<input name='bloco' type='hidden' value='2'>";
+					echo "<button class='btn btn-danger'> Deletar todo este bloco<img src='img/del_icon.png' alt='Academia' width='22'></button>";
+					echo "<br/><br/>";
+					echo"</form>";
+                    echo" <tr><th>Exercicio</th><th>Serie</th><th>Repetição</th><th>Carga</th><th>Bloco</th><th>Excluir</th></tr>";
                 
 				while( $dados_ficha2 = mysqli_fetch_assoc($fic2) ){   
                      echo "<tr>";
@@ -183,7 +206,13 @@ $id = $_SESSION['id'];
                 echo "<td>" .$dados_ficha2['repeticao']. "</td>";
                 echo "<td>" .$dados_ficha2['carga']. "</td>";
                 echo "<td>" .$dados_ficha2['bloco']. "</td>";
-                echo "</tr>";
+				echo "<td>";
+				echo "<form action='remove_ficha.php' method='post'>";
+				echo "<input name='id' type='hidden' value='" .$dados_ficha2['id_ficha']. "'>";
+				echo "<button type='submit' class='btn btn-outline-danger'> Deletar <img src='img/cancel_icon.png' alt='Academia' width='22'></button>";
+				echo "</form>";
+				echo"</td>";
+				echo "</tr>";
                      
                     
                 }
@@ -201,7 +230,12 @@ $id = $_SESSION['id'];
                     echo"<table class='table'>";
 					echo"<thead class='thead-dark'>";
                     echo"<h2>&nbsp;&nbsp;Bloco 3 Informações</h2>";					
-                    echo" <tr><th>Exercicio</th><th>Serie</th><th>Repetição</th><th>Carga</th><th>Bloco</th></tr>";
+                    echo"<form action='remove_ficha.php' method='post'>";
+					echo "<input name='bloco' type='hidden' value='3'>";
+					echo "<button class='btn btn-danger'> Deletar todo este bloco<img src='img/del_icon.png' alt='Academia' width='22'></button>";
+					echo "<br/><br/>";
+					echo"</form>";
+                    echo" <tr><th>Exercicio</th><th>Serie</th><th>Repetição</th><th>Carga</th><th>Bloco</th><th>Excluir</th></tr>";
                 
 				while( $dados_ficha3 = mysqli_fetch_assoc($fic3) ){   
                      echo "<tr>";
@@ -211,7 +245,13 @@ $id = $_SESSION['id'];
                 echo "<td>" .$dados_ficha3['repeticao']. "</td>";
                 echo "<td>" .$dados_ficha3['carga']. "</td>";
                 echo "<td>" .$dados_ficha3['bloco']. "</td>";
-                echo "</tr>";
+				echo "<td>";
+				echo "<form action='remove_ficha.php' method='post'>";
+				echo "<input name='id' type='hidden' value='" .$dados_ficha3['id_ficha']. "'>";
+				echo "<button type='submit' class='btn btn-outline-danger'> Deletar <img src='img/cancel_icon.png' alt='Academia' width='22'></button>";
+				echo "</form>";
+				echo"</td>";
+				echo "</tr>";
                      
                     
                 }
@@ -229,7 +269,12 @@ $id = $_SESSION['id'];
                     echo"<table class='table'>";
 					echo"<thead class='thead-dark'>";
                     echo"<h2>&nbsp;&nbsp;Bloco 4 Informações</h2>";
-                    echo" <tr><th>Exercicio</th><th>Serie</th><th>Repetição</th><th>Carga</th><th>Bloco</th></tr>";   
+                    echo"<form action='remove_ficha.php' method='post'>";
+					echo "<input name='bloco' type='hidden' value='4'>";
+					echo "<button class='btn btn-danger'> Deletar todo este bloco<img src='img/del_icon.png' alt='Academia' width='22'></button>";
+					echo "<br/><br/>";
+					echo"</form>";
+                    echo" <tr><th>Exercicio</th><th>Serie</th><th>Repetição</th><th>Carga</th><th>Bloco</th><th>Excluir</th></tr>";   
                 
 				while( $dados_ficha4 = mysqli_fetch_assoc($fic4) ){   
                      echo "<tr>";
@@ -239,7 +284,13 @@ $id = $_SESSION['id'];
                 echo "<td>" .$dados_ficha4['repeticao']. "</td>";
                 echo "<td>" .$dados_ficha4['carga']. "</td>";
                 echo "<td>" .$dados_ficha4['bloco']. "</td>";
-                echo "</tr>";
+                echo "<td>";
+				echo "<form action='remove_ficha.php' method='post'>";
+				echo "<input name='id' type='hidden' value='" .$dados_ficha4['id_ficha']. "'>";
+				echo "<button type='submit' class='btn btn-outline-danger'> Deletar <img src='img/cancel_icon.png' alt='Academia' width='22'></button>";
+				echo "</form>";
+				echo"</td>";
+				echo "</tr>";
                      
                     
                 }

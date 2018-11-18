@@ -1,7 +1,6 @@
 <?php
-//session_start();
-include ("conexao.php");
-if(isset($_SESSION['prof'])|| isset($_SESSION['adm'])){
+session_start();
+if(isset($_SESSION['adm'])){
 	//echo"bem vindo $_SESSION[adm]";
 }else{header("location:login.php");}
 ?>
@@ -22,13 +21,6 @@ if(isset($_SESSION['prof'])|| isset($_SESSION['adm'])){
      <link rel="stylesheet" href="css/estilo.css">
 	 
 <style type="text/css">
-table {
-    border-collapse: collapse;
-    border-spacing: 0;
-    width: 100%;
-    border: 1px solid #ddd;
-}
-
 body{
 	 background: url(img/cadastro.jpg) no-repeat 0px 0px;
 	 background-attachment: fixed;
@@ -37,6 +29,10 @@ body{
 label, h2 {
 	color:white;
 } 
+
+div.alert {
+    width: 70%;
+}
 </style>
 	 
 </head>
@@ -89,76 +85,25 @@ label, h2 {
         x.className = "topnav";
 		   }
 		}
-	</script>	
+	</script>
 	
-	<br/><br/><br/>
-	<h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Buscar alunos inadimplentes <img src="img/search_icon.png" alt="Academia" width="40"></h2>
-	<br/><br/>
+	<script src="jquery/dist/jquery.js"></script>
+    <script src="popper.js/dist/popper.min.js"></script>
+    <script src="js/bootstrap.js"></script>
 	
-  <div align="center">
-  <div class="form-group col-md-5">	
-  <form method="post" align="right">
-  <input type="date" class="form-control" name="data1"/>
-  <input type="date" class="form-control" name="data2"/>
-  <br/><br/>
-  <button class="btn btn-success btn-xs" type="submit" name="botao" value="verificar"> Buscar <img src="img/search_icon.png" alt="Academia" width="25"></button>
-  </form>
-  </div></div>
+	<br/><br/><br/><br/><br/><br/><br/><br/>
   
-  <br/><br/>
-  
-  <div style="overflow-x:auto;">
-		<div class="container">         		  
-            <table class="table table table-dark table-hover">
-                <thead>
-                  <tr>                   
-                    <th>NOME</th>	
-					<th>CPF</th>	
-                    <th>TELEFONE</th>										
-                  </tr>
-                </thead>
-                <tbody>   
-
-<?php
-
-//include ("conexao.php");
-$con = $_SESSION['con'];
-if(isset($_POST['botao'])){
-	$data1 = $_POST['data1'];
-	$data2 = $_POST['data2'];
-$sql = "SELECT id, nome, cpf, telefone from cliente where id <> all(SELECT id_cliente from mensalidade where data between '$data1'and '$data2') order by nome asc";
-$consulta = mysqli_query($con, $sql);
-
- while( $exibir = mysqli_fetch_assoc($consulta) ){
-			 echo "<tr>";
-			 echo "<td>" .$exibir['nome']. "</td>";
-			 echo "<td>" .$exibir['cpf']. "</td>";
-			 echo "<td>" .$exibir['telefone']. "</td>";
-			 echo "<tr>";
-			//echo $exibir['id'];
-			//echo $exibir['nome'];
-			//$cpf = $dados['cpf'];
-			//$telefone = $dados['telefone'];
-			 
-		 }
+  <div align='center'>
+  <div class='alert alert-warning'>				
+	<strong>Professor não cadastrado!</strong> O que deseja fazer agora?
+  </div>
+  </div>
 	
-}
-
-
-
-//conseguir o ultimo id de todos os clientes
-//pegar a data desse ultimo id para comparar
-//mostrar apenas os q a data for maior
-
-
-?>
-
-</tbody>
-              </table>            
-        </div>
-	</div>
-
-
-</body>
-
-</html>
+  <div align='center'> 
+      <br/><br/><br/>
+	  <a href='busca_prof.php'><button type='button' class='btn btn-basic btn-xs'><img src='img/voltar_icon.png' alt='Academia' width='30'> Voltar para a lista de alunos</button></a>
+      <a href='cadProf.php'><button type='button' class='btn btn-secondary btn-xs'> Tentar novamente <img src='img/adduser_icon.png' alt='Academia' width='22'></button></a>	    
+  </div>	
+	
+	</body>
+</html>	

@@ -1,3 +1,29 @@
+<?php
+include("conexao.php");
+//session_start();
+if(isset($_SESSION['usr'])){
+	//echo"bem vindo $_SESSION[adm]";
+}else{header("location:login.php");}
+?>
+
+<?php
+$cpf = $_SESSION['usr'];
+$conexao = $_SESSION['con'];
+$sql = "Select * from cliente where cpf = '$cpf' ";
+	 $info = mysqli_query ($conexao, $sql);
+	 while( $dados = mysqli_fetch_assoc($info) ){
+		 $_SESSION['nome'] = $dados['nome'];
+		$_SESSION['idusu'] = $dados['id'];
+		 }
+	$idusu = $_SESSION['idusu'];	 
+	$sql = "Select * from anamnese where id_cliente = '$idusu' ";
+$cond = mysqli_query($con,$sql);
+                
+                	
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -10,12 +36,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!------- estilo NAVBAR ------->
 	<link rel="stylesheet" type="text/css" href="css/style.css"/>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="css/bootstrap.css">	
 	<link rel="stylesheet" href="css/styleCad.css">
 	<!------- mascara FORMULARIO ------->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script> -->
 
 <style>
 body{
@@ -37,13 +62,15 @@ label, h2, div {
 				<a>
 				  <img src="img/logoNav.png" alt="logo" style="width:20px">
 				</a>
-			<a href="indexProf.php" class="active">Home</a>			
-			<a href="buscar.php">Gerenciar alunos</a>									
-			<a href="inadimplentes.php">Alunos inadimplentes</a>
-			<a href="pagamento.php">Pagamentos</a>
-			<a href="cadAluno.php">Cadastrar aluno</a>
+			<a href="indexAluno.php" class="active">Home</a>			
+			<a href="usr_ficha.php">Consultar ficha</a>
+			<?php 
+			if (mysqli_num_rows($cond) < 1){
+				echo "<a href='cadAnamnese.php'>Criar anamnese</a>";
+			}				
+			?>		
 			<a href="javascript:void(0);" class="icon" onclick="myFunction()">
-				<i class="fa fa-bars"></i>
+				<img src="img/bars_icon.png" alt="Academia" width="25">
 			<div class="topnav" id="iconNav">				
 				<a href="sair.php"><img src="img/sair_icon.png" alt="Academia" width="25"> Sair </a> 
 			</div>	
@@ -67,6 +94,7 @@ label, h2, div {
 <br/> 
 <h2>&nbsp;&nbsp;Ficha da Anamnese: Identificação <img src="img/id_icon.png" alt="Academia" width="35"></h2>
 <hr/>
+
 <form method="POST" action="cad_anamnese.php" >
   <hr/>
   <div class="row">
@@ -100,10 +128,12 @@ label, h2, div {
 
 <div class="form-group col-md-3">
     <div class="form-group">
-      	<label for="hstrab">Horário de Saída do trabalho:</label>
-      	<select class="form-control">
+      	<label for="hstrab">Quantas horas trabalha por dia?</label>
+      	<select name="hstrab" class="form-control">
           <option name="hstrab" value="5h">5hrs</option>
           <option name="hstrab" value="7h">7hrs</option>
+		  <option name="hstrab" value="8h">8hrs</option>
+		  <option name="hstrab" value="9h">9hrs</option>
           <option name="hstrab" value="10h">10hrs</option>
           <option name="hstrab" value="12h">12hrs</option>
 		  <option name="hstrab" value="15h">15hrs</option>       					
@@ -243,12 +273,12 @@ label, h2, div {
   
     <div class="form-group">
       	<label for="horas_sono">Quantas horas dorme por dia?</label>
-      	<select class="form-control">
-          <option name="horas_sono"value="4 horas">4hrs</option>
-          <option name="horas_sono" value="5 horas">5hrs</option>
-          <option name="horas_sono" value="6 horas">6hrs</option>
-          <option name="horas_sono" value="7 horas">7hrs</option>
-		  <option name="horas_sono" value="8 horas ou mais">+8hrs</option>       					
+      	<select name="horas_sono"  class="form-control">
+          <option name="horas_sono"value="4hrs">4hrs</option>
+          <option name="horas_sono" value="5hrs">5hrs</option>
+          <option name="horas_sono" value="6hrs">6hrs</option>
+          <option name="horas_sono" value="7hrs">7hrs</option>
+		  <option name="horas_sono" value="8hrs+">8hrs ou mais</option>       					
       	</select>     
    </div>
   
@@ -315,7 +345,7 @@ label, h2, div {
 
 <div class="form-group col-md-2">  
       	<label for="medi_quant">Quantidade?</label>
-      	<select class="form-control" id="quais51" required disabled>
+      	<select name="medi_quant" class="form-control" id="quais51" required disabled>
           <option name="medi_quant" value=""></option>
           <option name="medi_quant" value="1">1</option>
           <option name="medi_quant" value="2">2</option>
@@ -424,7 +454,7 @@ label, h2, div {
   <div id="actions" class="row" align="right">
     <div class="col-md-12">
       <button class="btn btn-success btn-xs" type="submit" name="enviar"> Salvar <img src="img/ok_icon.png" alt="Academia" width="25"></button>
-      <a href="buscar.php"><button type="button" class="btn btn-danger btn-xs"> Calcelar <img src="img/cancel_icon.png" alt="Academia" width="18"></button><a/>
+      <a href="indexAluno.php"><button type="button" class="btn btn-danger btn-xs"> Calcelar <img src="img/cancel_icon.png" alt="Academia" width="18"></button><a/>
     </div>
   </div>				
 				

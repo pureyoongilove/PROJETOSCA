@@ -21,8 +21,8 @@ if(isset($_SESSION['adm'])){
 	<link rel="stylesheet" href="css/bootstrap.css">	
 	<link rel="stylesheet" href="css/styleCad.css">
 	<!------- mascara FORMULARIO ------->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script> -->
 
 <style>
 body{
@@ -44,15 +44,35 @@ label, h2 {
 				<a>
 				  <img src="img/logoNav.png" alt="logo" style="width:20px">
 				</a>
-			<a href="indexAdm.php" class="active">Home</a>			
-			<a href="busca_prof.php">Gerenciar professores</a>
-			<a href="cadProf.php">Cadastrar professores</a>
-			<a href="javascript:void(0);" class="icon" onclick="myFunction()">
-				<i class="fa fa-bars"></i>
-			<div class="topnav" id="iconNav">				
-				<a href="sair.php"><img src="img/sair_icon.png" alt="Academia" width="25"> Sair </a> 
-			</div>	
-			</a>
+			<?php
+			if(isset($_SESSION['adm'])){
+				echo"<a href='indexAdm.php' class='active'>Home</a>			
+			<a href='buscar.php'>Gerenciar alunos</a>
+			<a href='busca_prof.php'>Gerenciar professores</a>			
+			<a href='inadimplentes.php'>Alunos inadimplentes</a>
+			<a href='pagamento.php'>Pagamentos</a>
+			<a href='cadAluno.php'>Cadastrar aluno</a>
+			<a href='cadProf.php'>Cadastrar professor</a>
+			<a href='sair.php'><img src='img/sair_icon.png' alt='Academia' width='25'> Sair</a>
+			<a href='javascript:void(0);' class='icon' onclick='myFunction()'>
+			<img src='img/bars_icon.png' alt='Academia' width='25'>			
+			</a>";
+			}
+			if(isset($_SESSION['prof'])){
+				echo"<a href='indexProf.php' class='active'>Home</a>			
+			<a href='buscar.php'>Gerenciar alunos</a>									
+			<a href='inadimplentes.php'>Alunos inadimplentes</a>
+			<a href='pagamento.php'>Pagamentos</a>
+			<a href='cadAluno.php'>Cadastrar aluno</a>
+			<a href='javascript:void(0);' class='icon' onclick='myFunction()'>
+			<img src='img/bars_icon.png' alt='Academia' width='25'>
+			<div class='topnav' id='iconNav'>			
+				<a href='sair.php'><img src='img/sair_icon.png' alt='Academia' width='25'> Sair</a>
+			</div>
+			</a>";
+				
+			}				
+			?>
 	    </div>
 	
 		<!---------------------------- SCRIPT NAVBAR ---------------------------->
@@ -69,7 +89,7 @@ label, h2 {
 	
 		<!---------------------------- FORMULARIO ---------------------------->
 <br/> 
-<h2>&nbsp;&nbsp;Novo Professor</h2>
+<h2>&nbsp;&nbsp;Novo Professor <img src="img/adduser_icon.png" alt="Academia" width="40"></h2>
 
 <form action="cad_prof.php" method="POST">
   <hr/>
@@ -81,8 +101,8 @@ label, h2 {
 
      <div class="form-group col-md-1">
       <label for="sexo">Sexo</label>   	
-      		<label><input type="radio" name="sexo" value="M">Feminino</label>
-      		<label><input type="radio" name="sexo" value="F">Masculino</label>    				
+      		<label><input type="radio" name="sexo" value="F">Feminino</label>
+      		<label><input type="radio" name="sexo" value="M">Masculino</label>    				
     </div>
 
     <div class="form-group col-md-2">

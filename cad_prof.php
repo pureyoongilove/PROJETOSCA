@@ -22,11 +22,11 @@ $query2 = "INSERT INTO login (cpf, senha, privilegio) VALUES( '$cpf', '$senha', 
 $sql = mysqli_query($con,$query2);
 
 if( !$sql ){
-        header("Location:cadProf.php?cadastro=false");
+        header("Location:cadProfNotOk.php?cadastro=false");
         exit;
     }
 
     //se tudo deu certo, redireciona pra exibe.php com alteracao igual a true
-    header("Location:cadProf.php?cadastro=true");
+    header("Location:cadProfOk.php?cadastro=true");
 
 ?>

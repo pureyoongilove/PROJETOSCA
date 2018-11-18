@@ -31,11 +31,11 @@ date_default_timezone_set('America/Sao_Paulo');
     $sql = mysqli_query($con,$query2);
     
     if( !$sql ){
-        header("Location:cadAluno.php?cadastro=false");
+        header("Location:cadAlunoNotOk.php?cadastro=false");
         exit;
     }
 
     //se tudo deu certo, redireciona pra exibe.php com alteracao igual a true
-    header("Location:buscar.php?cadastro=true");
+    header("Location:cadAlunoOk.php?cadastro=true");
 
 ?>

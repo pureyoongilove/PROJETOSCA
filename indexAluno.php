@@ -5,18 +5,21 @@ if(isset($_SESSION['usr'])){
 	//echo"bem vindo $_SESSION[adm]";
 }else{header("location:login.php");}
 ?>
+
 <?php
-/*$cpf = $_SESSION['usr'];
+$cpf = $_SESSION['usr'];
 $conexao = $_SESSION['con'];
-$sql = "Select * from cliente where cpf = $cpf ";
+$sql = "Select * from cliente where cpf = '$cpf' ";
 	 $info = mysqli_query ($conexao, $sql);
 	 while( $dados = mysqli_fetch_assoc($info) ){
 		 $_SESSION['nome'] = $dados['nome'];
-	$nome = $dados['nome'];
+		$_SESSION['idusu'] = $dados['id'];
 		 }
-echo "$nome";*/
-
+	$idusu = $_SESSION['idusu'];	 
+	$sql = "Select * from anamnese where id_cliente = '$idusu' ";
+$cond = mysqli_query($con,$sql);
 ?>
+
 <!DOCTYPE html> 
 <html lang="pt-br">
 
@@ -29,7 +32,6 @@ echo "$nome";*/
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!------- estilo NAVBAR --------->
 	<link rel="stylesheet" type="text/css" href="css/style.css"/>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<!------- estilo CARROCEL ------->
 	<link rel="stylesheet" href="css/bootstrap.css">
 	
@@ -49,13 +51,17 @@ echo "$nome";*/
 				<a>
 				  <img src="img/logoNav.png" alt="logo" style="width:20px">
 				</a>
-			<a href="#home" class="active">Home</a>	
-			<a href="usr_ficha.php">Consultar ficha</a>
-			<a href="visualizar_ficha.php">Consultar anamnese</a>
+			<a href="indexAluno.php" class="active">Home</a>			
+			<a href="usr_ficha.php">Consultar ficha</a>			
+			<?php 
+			if (mysqli_num_rows($cond) < 1){
+				echo "<a href='cadAnamnese.php'>Criar anamnese</a>";
+			}				
+			?>		
 			<a href="javascript:void(0);" class="icon" onclick="myFunction()">
-				<i class="fa fa-bars"></i>
-			<div class="topnav" id="iconNav">			
-				<a href="sair.php"><img src="img/sair_icon.png" alt="Academia" width="25"> Sair</a>
+				<img src="img/bars_icon.png" alt="Academia" width="25">
+			<div class="topnav" id="iconNav">				
+				<a href="sair.php"><img src="img/sair_icon.png" alt="Academia" width="25"> Sair </a> 
 			</div>	
 			</a>
 	    </div>
@@ -71,7 +77,7 @@ echo "$nome";*/
   
   		<div class="carousel-inner">
     		<div class="carousel-item active">
-      			<img src="img/gym1.jpg" alt="Academia" width="1100" height="500">
+      			<img src="img/gymmAluno.png" alt="Academia" width="1100" height="500">
     		</div>
     		<div class="carousel-item">
       			<img src="img/gym2.jpg" alt="Academia" width="1100" height="500">
@@ -89,8 +95,26 @@ echo "$nome";*/
   		</a>
 	</div>		
 
+		<!---------------------------- ANAMESE CADASTRO ---------------------------->
+		<?php
+		//Se existe a variável cadastro, então
+        if( isset($_GET['cadastro'])){
+            //Se cadastro tem true, os dados foram cadastrados
+            if( $_GET['cadastro'] == "true" ){
+                echo "<div class='alert alert-success alert-dismissible fade show'>
+					<button type='button' class='close' data-dismiss='alert'>&times;</button>
+					<strong>Anamnese cadastrada com sucesso!</strong> A anamnese foi cadastrada com exito!
+					</div>";            
+            }else{
+                echo "<div class='alert alert-danger alert-dismissible fade show'>
+					<button type='button' class='close' data-dismiss='alert'>&times;</button>
+					<strong>Erro no cadastro!</strong> Os dados não foram cadastrados.
+					</div>";
+            }
+		}
+			?>
 		<!---------------------------- BLOCOS DE TEXTO/IMAGEM ---------------------------->
-<div class="serives-agile py-5 border-top" id="services">
+	<div class="serives-agile py-5 border-top" id="services">
 		<div class="container py-xl-5 py-lg-3">
 			<div class="row support-bottom text-center">
 				<div class="col-md-4 support-grid">
@@ -106,7 +130,7 @@ echo "$nome";*/
 						<img src="img/conheca.png" alt="logo" style="width:70px">
 					</a>
 					<h5 class="text-dark text-uppercase mt-4 mb-3">Promoções</h5>
-					<p>Confira as promoções especiais feitas para você.</p>
+					<p>Confira nossos preços.</p>
 					<a href="#section2"><button id="botao" class="button button1">Clique aqui</button></a>
 				</div>
 				<div class="col-md-4 support-grid">
@@ -122,16 +146,14 @@ echo "$nome";*/
 			
 			<div id="section1" class="container-fluid bg-link" style="padding-top:70px;padding-bottom:0.5px">
 		  <h1>Conheça</h1>
-		  <br/>
+		  <br/><br/>
 		  <img src="img/gym5.jpg" class="img-fluid" style="width:355px">
 		  <img src="img/gym6.jpg" class="img-fluid" style="width:355px">
 		  <img src="img/gym7.jpg" class="img-fluid" style="width:355px">
 		  <br/><br/>
-		  <h6>Somos uma academia tradicional localizada entre os bairros Flamengo e Botafogo com mais de 20 anos no mercado, 
-		  sempre trabalhando para criar relacionamentos mais próximos com nossos alunos e fazer da nossa academia uma extensão da sua casa. 
-		  Trabalhar pela saúde e pela melhoria da qualidade de vida das pessoas é a essência da Max Forma. 
-		  Aqui você pode realizar todo tipo de atividade e manter-se completamente em forma, trabalhando tanto seu corpo quanto sua mente.</h>
-		  <br/><br/>
+		  <h5>Visamos pelo bom atendimento ao cliente e qualidade de nossas aulas e equipamentos.  
+		  Aqui você pode manter-se completamente em forma, trabalhando tanto seu corpo quanto sua mente. </h5>
+		  <br/>
 		  <div class="container">
 	  		<br/>
 	  		<div class="card">
@@ -147,9 +169,47 @@ echo "$nome";*/
 		    	</div>
 	  		</div>
 		</div>		  
-		  </div>		 	   
+		  </div>
+		  
+		<div id="section2" class="container-fluid bg-link" style="padding-top:70px;padding-bottom:0.5px">
+		  <h1>Promoções</h1>
+		  <br/><br/>
+<div class="columns">
+  <ul class="price">
+    <li class="header">Pacotes</li>
+    <li class="grey">A partir de R$35,00 / Mês</li>
+    <li>Musculação</li>
+    <li>Aeróbica</li>
+    <li>Zumba</li>  
+  </ul>
+  <br/><br/>
+</div>
 
-		<div id="section3" class="container-fluid bg-link" style="padding-top:70px;padding-bottom:0.5px">
+<div class="columns">
+  <ul class="price">
+    <li class="header" style="background-color:#333">Pacotes</li>
+    <li class="grey">A partir de R$45,00 / Mês</li>
+    <li>Musculação</li>
+    <li>Aeróbica</li>
+    <li>Zumba</li>  
+  </ul>
+  <br/><br/>
+</div>
+
+<div class="columns">
+  <ul class="price">
+    <li class="header">Avulsas</li>
+    <li class="grey">A partir de R$10,00</li>
+    <li>Musculação</li>
+    <li>Aeróbica</li>
+    <li>Zumba</li>  
+  </ul>
+  <br/><br/>
+</div>		  
+        </div>       
+	
+		<div id="section3" class="container-fluid bg-link" style="padding-top:70px;padding-bottom:0.5px">		  
+		  <br/>
 		  <h1>Contatos e Localização</h1>
 		  <br/>
 		<div class="row support-bottom text-left">
@@ -177,9 +237,10 @@ echo "$nome";*/
 		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d921.1620812621368!2d-45.780475670779666!3d-22.554842860547!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cb88e8a2e66abb%3A0x26ab22496718746f!2sAcademia+Para%C3%ADso+Fitness!5e0!3m2!1spt-BR!2sbr!4v1541792407454" width="100%" height="295px" frameborder="0" style="border:0" allowfullscreen></iframe>				
 		</div>
 		</div>
-		</div></div></div>	
+		</div></div></div>
 	
-		<!---------------------------- SCRIPT CAROUSEL ---------------------------->
+	
+		<!---------------------------- SCRIPT CARROCEL ---------------------------->
 		<script src="jquery/dist/jquery.js"></script>
         <script src="popper.js/dist/popper.min.js"></script>
         <script src="js/bootstrap.js"></script>
@@ -196,11 +257,11 @@ echo "$nome";*/
 		   }
 		}
 	</script>
-	
-	<!---------------------------- FOOTER ---------------------------->	
+
+		<!---------------------------- FOOTER ---------------------------->	
 	<div class="footer">
 		<p>Sistema para Controle de Academia - 2018 | Project by: Aline, Guilherme e Laura | IM3A</p>
-	</div>	
+	</div>
 	
 	</body>
 	

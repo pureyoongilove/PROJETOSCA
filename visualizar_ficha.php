@@ -1,9 +1,17 @@
 <?php
-//session_start();
 include("conexao.php");
-if(isset($_SESSION['usr'])){
+//session_start();
+if(isset($_SESSION['prof'])|| isset($_SESSION['adm'])){
 	//echo"bem vindo $_SESSION[adm]";
-}else{header("location:login.php");}
+}else{
+	header("location:login.php");
+	}
+if(isset($_SESSION['id'])){
+	//tudo certo
+}
+else{
+	header("location:buscar.php");
+}
 ?>
 
 <!DOCTYPE html>
@@ -18,9 +26,35 @@ if(isset($_SESSION['usr'])){
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!------- estilo NAVBAR ------->
 	<link rel="stylesheet" type="text/css" href="css/style.css"/>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="css/bootstrap.css">	
 	<link rel="stylesheet" href="css/styleCad.css">
+
+<style>
+
+body{
+	 background: url(img/cadastro.jpg) no-repeat 0px 0px;
+	 background-attachment: fixed;
+ }
+ 
+label, h2 {
+	color:white;
+} 
+
+tr {
+	background:white;
+	color:black;
+}
+
+hr { 
+background-color: white; 
+height: 1px; 
+border: 0; 
+}
+
+div.alert {
+    width: 70%;
+}
+</style>
 	
 </head>
 
@@ -31,15 +65,35 @@ if(isset($_SESSION['usr'])){
 				<a>
 				  <img src="img/logoNav.png" alt="logo" style="width:20px">
 				</a>
-			<a href="indexAluno.php" class="active">Home</a>			
-			<a href="usr_ficha.php">Consultar ficha</a>
-			<a href="visualizar_ficha.php">Consultar anamnese</a>
-			<a href="javascript:void(0);" class="icon" onclick="myFunction()">
-				<i class="fa fa-bars"></i>
-			<div class="topnav" id="iconNav">				
-				<a href="sair.php"><img src="img/sair_icon.png" alt="Academia" width="25"> Sair </a> 
-			</div>	
-			</a>
+			<?php
+			if(isset($_SESSION['adm'])){
+				echo"<a href='indexAdm.php' class='active'>Home</a>			
+			<a href='buscar.php'>Gerenciar alunos</a>
+			<a href='busca_prof.php'>Gerenciar professores</a>			
+			<a href='inadimplentes.php'>Alunos inadimplentes</a>
+			<a href='pagamento.php'>Pagamentos</a>
+			<a href='cadAluno.php'>Cadastrar aluno</a>
+			<a href='cadProf.php'>Cadastrar professor</a>
+			<a href='sair.php'><img src='img/sair_icon.png' alt='Academia' width='25'> Sair</a>
+			<a href='javascript:void(0);' class='icon' onclick='myFunction()'>
+			<img src='img/bars_icon.png' alt='Academia' width='25'>			
+			</a>";
+			}
+			if(isset($_SESSION['prof'])){
+				echo"<a href='indexProf.php' class='active'>Home</a>			
+			<a href='buscar.php'>Gerenciar alunos</a>									
+			<a href='inadimplentes.php'>Alunos inadimplentes</a>
+			<a href='pagamento.php'>Pagamentos</a>
+			<a href='cadAluno.php'>Cadastrar aluno</a>
+			<a href='javascript:void(0);' class='icon' onclick='myFunction()'>
+			<img src='img/bars_icon.png' alt='Academia' width='25'>
+			<div class='topnav' id='iconNav'>			
+				<a href='sair.php'><img src='img/sair_icon.png' alt='Academia' width='25'> Sair</a>
+			</div>
+			</a>";
+				
+			}				
+			?>
 	    </div>
 	
 		<!---------------------------- SCRIPT NAVBAR ---------------------------->
@@ -53,28 +107,29 @@ if(isset($_SESSION['usr'])){
 		   }
 		}
 	</script>
-	<br/>
-	<h2>Visualize sua Ficha <img src="img/fichatec.png" alt="Academia" width="100" height="65"></h2>
+	<br/><br/>
+	<h2>&nbsp;&nbsp; Visualize a anamnese do aluno <img src="img/fichatec.png" alt="Academia" width="100" height="65"></h2>
 	<hr>
 	<br/>
 
 <?php 
 //include("conexao.php");
 $conexao = $_SESSION['con'];
-$cpf = $_SESSION['usr'];
-$id="fail";
-$sql = "SELECT * FROM `cliente` WHERE `cpf` = $cpf";
+//$cpf = $_SESSION['usr'];
+$id = $_SESSION['id'];
+//$sql = "SELECT * FROM `cliente` WHERE `cpf` = $cpf";
 
-$vis = mysqli_query($conexao, $sql);
+/*$vis = mysqli_query($conexao, $sql);
 while ($dados = mysqli_fetch_assoc($vis)) {
 	$id = $dados['id'];
-}
+}*/
 //echo $id;
-$sql = "SELECT * FROM `anamnese` WHERE `id_cliente` = $id";
+$sql = "SELECT * FROM `anamnese` WHERE `id_cliente` = '$id'";
 $visu = mysqli_query($conexao, $sql);
+ if (mysqli_num_rows($visu) >= 1){
 while ($dados = mysqli_fetch_assoc($visu)) {
 	
-	echo "<h2>&nbsp;&nbsp;Atividades da vida diária <img src='img/temp_icon_usr.png' alt='Academia' width='30'></h2>		    
+	echo "<h2>&nbsp;&nbsp;Atividades da vida diária <img src='img/temp_icon.png' alt='Academia' width='30'></h2>		    
 		  <br/>
 
 	<div class='row'>
@@ -90,20 +145,14 @@ while ($dados = mysqli_fetch_assoc($visu)) {
 
 <div class='form-group col-md-6'>
     <div class='form-group'>
-      	<label for='hstrab'>Horário de Saída do trabalho:</label>
-      	<select class='form-control'>
-          <option name='hstrab' value='5h'>5hrs</option>
-          <option name='hstrab' value='7h'>7hrs</option>
-          <option name='hstrab' value='10h'>10hrs</option>
-          <option name='hstrab' value='12h'>12hrs</option>
-		  <option name='hstrab' value='15h'>15hrs</option>       					
-      	</select>     
+      	<label for='	hstrabalho'>Horário de Saída do trabalho:</label>
+      	<input type='text' name='bebe' value='" . $dados['hstrabalho'] . "' class='form-control' disabled>
    </div>
 </div> 
 </div>
 	
 	<div class='row'>
-<div class='form-group col-md-3'>
+<div class='form-group col-md-2'>
 
 <label for='faz_exer'>Faz exercícios?</label> 
 	<input type='text' name='faz_exer' value='" . $dados['faz_exercicio'] . "' class='form-control' disabled>	
@@ -117,24 +166,18 @@ while ($dados = mysqli_fetch_assoc($visu)) {
 
 </div>
 
-<div class='form-group col-md-2'>
+<div class='form-group col-md-3'>
   
     <div class='form-group'>
       	<label for='horas_sono'>Quantas horas dorme por dia?</label>
-      	<select class='form-control' disabled>
-          <option name='horas_sono'value='4 horas'>4hrs</option>
-          <option name='horas_sono' value='5 horas'>5hrs</option>
-          <option name='horas_sono' value='6 horas'>6hrs</option>
-          <option name='horas_sono' value='7 horas'>7hrs</option>
-		  <option name='horas_sono' value='8 horas ou mais'>+8hrs</option>       					
-      	</select>     
+		<input type='text' name='horas_sono' value='" . $dados['horas_sono'] . "' class='form-control' disabled>
    </div>
   
 </div>
 </div>
 
 <br/><br/>
-<h2>&nbsp;&nbsp;Histórico médico <img src='img/heart_icon_usr.png' alt='Academia' width='35'></h2>
+<h2>&nbsp;&nbsp;Histórico médico <img src='img/heart_icon.png' alt='Academia' width='35'></h2>
 
 <div class='row'>
 <div class='form-group col-md-5'>
@@ -185,14 +228,7 @@ while ($dados = mysqli_fetch_assoc($visu)) {
 
 <div class='form-group col-md-2'>  
       	<label for='medi_quant'>Quantidade?</label>
-      	<select class='form-control' disabled>
-          <option name='medi_quant' value=''></option>
-          <option name='medi_quant' value='1'>1</option>
-          <option name='medi_quant' value='2'>2</option>
-          <option name='medi_quant' value='3'>3</option>
-          <option name='medi_quant'value='4'>4</option>
-		  <option name='medi_quant'value='+4'>+ de 4</option>       					
-      	</select>     
+		<input type='text' name='medi_quant' value='" . $dados['medi_quant'] . "' class='form-control' disabled>
 </div>
 </div> 
 </div>
@@ -250,51 +286,32 @@ while ($dados = mysqli_fetch_assoc($visu)) {
 </div>  
 
 <br/><br/>
-<h2>&nbsp;&nbsp;Objetivos com relação a atividade física <img src='img/atv_icon_usr.png' alt='Academia' width='30'></h2>
+<h2>&nbsp;&nbsp;Objetivos com relação a atividade física <img src='img/atv_icon.png' alt='Academia' width='30'></h2>
 
 <div class='row'>
-<div class='form-group col-md-10'>
-    			<div class='form-check form-check-inline'>
-      				<label class='form-check-label' for='objetivo1'>
-        				<input type='checkbox' class='form-check-input' name='objetivo1' value='Estética'>Estética</label>
-    			</div>
-    			<div class='form-check form-check-inline'>
-      				<label class='form-check-label' for='objetivo2'>
-        				<input type='checkbox' class='form-check-input' name='objetivo2' value='Lazer'>Lazer</label>
-    			</div>
-    			<div class='form-check form-check-inline'>
-      				<label class='form-check-label' for='objetivo3'>
-        				<input type='checkbox' class='form-check-input' name='objetivo3' value='Terapêutico'>Terapêutico</label>
-    			</div>
-				<div class='form-check form-check-inline'>
-      				<label class='form-check-label' for='objetivo4'>
-        				<input type='checkbox' class='form-check-input' name='objetivo4' value='Cond. Físico'>Cond. Físico</label>
-    			</div>
-				<div class='form-check form-check-inline'>
-      				<label class='form-check-label' for='objetivo5'>
-        				<input type='checkbox' class='form-check-input' name='objetivo5' value='Convivio Social'>Convivio Social</label>
-    			</div>
-				<div class='form-check form-check-inline'>
-      				<label class='form-check-label' for='objetivo6'>
-        				<input type='checkbox' class='form-check-input' name='objetivo6' value='Emagrecimento'>Emagrecimento</label>
-    			</div>
-				<div class='form-check form-check-inline'>
-      				<label class='form-check-label' for='objetivo7'>
-        				<input type='checkbox' class='form-check-input' name='objetivo7' value='Hipertrofia'>Hipertrofia</label>
-    			</div>				
-
-	<br/><br/><br/>
-
-";
+<div class='form-group col-md-11'>
+  <input type='text' name='objetivo' value='" . $dados['objetivo'] . "' class='form-control' disabled>  			
+</div>";
 }
+ }
+ else{
+	 
+	 //mostra se n existe ficha cadastrada
+	 echo "<br/><br/><br/><br/>
+		  <div align='center'>
+			 <div class='alert alert-warning'>				
+				<strong>Aluno ainda não possui anamnese!</strong> Anamnese não cadastrada pelo aluno.
+			</div>
+		  </div>";
+ }
 
-?>
-
-		<br/>
+?>		
 		
+	<br/><br/>
+	
 	<div id="actions" class="row" align="right">
 		<div class="col-md-12">
-		<a href="indexAluno.php"><button type="button" class="btn btn-secondary">Voltar</button></a>
+		<a href="buscar.php"><button type="button" class="btn btn-secondary">Voltar</button></a>
 		</div>
 	</div>	
 

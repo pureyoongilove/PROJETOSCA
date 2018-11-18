@@ -19,13 +19,9 @@ if(isset($_SESSION['prof'])|| isset($_SESSION['adm'])){
 	 <meta name="viewport" content="width=device-width, initial-scale=1">
 	 <!------- estilo NAVBAR --------->
 	 <link rel="stylesheet" type="text/css" href="css/style.css"/>
-	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	 <!------- estilo LISTA CLIENTES --------->	
      <link rel="stylesheet" href="css/bootstrap.css">
      <link rel="stylesheet" href="css/estilo.css">
-	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	 <!------- estilo LISTA CLIENTES --------->
-	 <meta name="viewport" content="width=device-width, initial-scale=1">
 	 
 <style>
 form#formulario {
@@ -58,17 +54,35 @@ tr {
 				<a>
 				  <img src="img/logoNav.png" alt="logo" style="width:20px">
 				</a>
-			<a href="indexProf.php" class="active">Home</a>			
-			<a href="buscar.php">Gerenciar alunos</a>									
-			<a href="inadimplentes.php">Alunos inadimplentes</a>
-			<a href="pagamento.php">Pagamentos</a>
-			<a href="cadAluno.php">Cadastrar aluno</a>
-			<a href="javascript:void(0);" class="icon" onclick="myFunction()">
-				<i class="fa fa-bars"></i>
-			<div class="topnav" id="iconNav">			
-				<a href="sair.php"><img src="img/sair_icon.png" alt="Academia" width="25"> Sair</a>
-			</div>	
-			</a>
+			<?php
+			if(isset($_SESSION['adm'])){
+				echo"<a href='indexAdm.php' class='active'>Home</a>			
+			<a href='buscar.php'>Gerenciar alunos</a>
+			<a href='busca_prof.php'>Gerenciar professores</a>			
+			<a href='inadimplentes.php'>Alunos inadimplentes</a>
+			<a href='pagamento.php'>Pagamentos</a>
+			<a href='cadAluno.php'>Cadastrar aluno</a>
+			<a href='cadProf.php'>Cadastrar professor</a>
+			<a href='sair.php'><img src='img/sair_icon.png' alt='Academia' width='25'> Sair</a>
+			<a href='javascript:void(0);' class='icon' onclick='myFunction()'>
+			<img src='img/bars_icon.png' alt='Academia' width='25'>			
+			</a>";
+			}
+			if(isset($_SESSION['prof'])){
+				echo"<a href='indexProf.php' class='active'>Home</a>			
+			<a href='buscar.php'>Gerenciar alunos</a>									
+			<a href='inadimplentes.php'>Alunos inadimplentes</a>
+			<a href='pagamento.php'>Pagamentos</a>
+			<a href='cadAluno.php'>Cadastrar aluno</a>
+			<a href='javascript:void(0);' class='icon' onclick='myFunction()'>
+			<img src='img/bars_icon.png' alt='Academia' width='25'>
+			<div class='topnav' id='iconNav'>			
+				<a href='sair.php'><img src='img/sair_icon.png' alt='Academia' width='25'> Sair</a>
+			</div>
+			</a>";
+				
+			}				
+			?>
 	    </div>
 		
 		<!---------------------------- SCRIPT NAVBAR ---------------------------->
@@ -97,6 +111,7 @@ tr {
 
 
         ?>
+		<br/><br/>
 		<h2>&nbsp;&nbsp;Editar cliente <img src="img/user_edit.png" alt="Academia" width="45"></h2>
 		<hr>
         <form id="formulario" action="salva.php" method="post">

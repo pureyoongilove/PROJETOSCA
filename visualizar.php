@@ -4,6 +4,11 @@ include ("conexao.php");
 if(isset($_SESSION['prof'])|| isset($_SESSION['adm'])){
 	//echo"bem vindo $_SESSION[adm]";
 }else{header("location:login.php");}
+if(isset($_POST['id'])){
+	//echo"taokei";
+}else{header("location:buscar.php");
+	
+}
 ?>
 
 
@@ -17,13 +22,9 @@ if(isset($_SESSION['prof'])|| isset($_SESSION['adm'])){
 	 <meta name="viewport" content="width=device-width, initial-scale=1">
 	 <!------- estilo NAVBAR --------->
 	 <link rel="stylesheet" type="text/css" href="css/style.css"/>
-	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	 <!------- estilo LISTA CLIENTES --------->	
      <link rel="stylesheet" href="css/bootstrap.css">
      <link rel="stylesheet" href="css/estilo.css">
-	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	 <!------- estilo LISTA CLIENTES --------->
-	 <meta name="viewport" content="width=device-width, initial-scale=1">
    
 <style>
 div#view {
@@ -37,7 +38,7 @@ body{
 	 background-attachment: fixed;
  }
  
-label, h2 {
+label, h2, h4 {
 	color:white;
 } 
  
@@ -56,17 +57,35 @@ tr {
 				<a>
 				  <img src="img/logoNav.png" alt="logo" style="width:20px">
 				</a>
-			<a href="indexProf.php" class="active">Home</a>			
-			<a href="buscar.php">Gerenciar alunos</a>									
-			<a href="inadimplentes.php">Alunos inadimplentes</a>
-			<a href="pagamento.php">Pagamentos</a>
-			<a href="cadAluno.php">Cadastrar aluno</a>
-			<a href="javascript:void(0);" class="icon" onclick="myFunction()">
-				<i class="fa fa-bars"></i>
-			<div class="topnav" id="iconNav">			
-				<a href="sair.php"><img src="img/sair_icon.png" alt="Academia" width="25"> Sair</a>
-			</div>	
-			</a>
+			<?php
+			if(isset($_SESSION['adm'])){
+				echo"<a href='indexAdm.php' class='active'>Home</a>			
+			<a href='buscar.php'>Gerenciar alunos</a>
+			<a href='busca_prof.php'>Gerenciar professores</a>			
+			<a href='inadimplentes.php'>Alunos inadimplentes</a>
+			<a href='pagamento.php'>Pagamentos</a>
+			<a href='cadAluno.php'>Cadastrar aluno</a>
+			<a href='cadProf.php'>Cadastrar professor</a>
+			<a href='sair.php'><img src='img/sair_icon.png' alt='Academia' width='25'> Sair</a>
+			<a href='javascript:void(0);' class='icon' onclick='myFunction()'>
+			<img src='img/bars_icon.png' alt='Academia' width='25'>			
+			</a>";
+			}
+			if(isset($_SESSION['prof'])){
+				echo"<a href='indexProf.php' class='active'>Home</a>			
+			<a href='buscar.php'>Gerenciar alunos</a>									
+			<a href='inadimplentes.php'>Alunos inadimplentes</a>
+			<a href='pagamento.php'>Pagamentos</a>
+			<a href='cadAluno.php'>Cadastrar aluno</a>
+			<a href='javascript:void(0);' class='icon' onclick='myFunction()'>
+			<img src='img/bars_icon.png' alt='Academia' width='25'>
+			<div class='topnav' id='iconNav'>			
+				<a href='sair.php'><img src='img/sair_icon.png' alt='Academia' width='25'> Sair</a>
+			</div>
+			</a>";
+				
+			}				
+			?>
 	    </div>
 		
 		<!---------------------------- SCRIPT NAVBAR ---------------------------->
@@ -85,16 +104,33 @@ tr {
 	<br/><br/>	
 	
         <h2>&nbsp;&nbsp;Visualizar Informações <img src="img/user_view.png" alt="Academia" width="45"></h2>		
+		<?php 
+		$id = filter_input(INPUT_POST, 'id');
+                
+                $_SESSION['id'] = $id;
+		
+	
+	$conexao = $_SESSION['con'];
+	$nome = "";
+	$sql = "SELECT * FROM `cliente` WHERE `id` = '$id'";
+	$visuNome = mysqli_query($conexao, $sql);
+	while($cliente = mysqli_fetch_assoc($visuNome)){
+		$nome = $cliente['nome'];
+	}
+	echo "<h4>&nbsp;&nbsp;&nbsp;&nbsp;Aluno: ".$nome." </h4>";
+	?>
+		
+		
 		<hr>
 		
                 <?php
 //conexão
            //include ("conexao.php");
-            $conexao = $_SESSION['con'];
+           // $conexao = $_SESSION['con'];
 //id do cliente            
-                $id = filter_input(INPUT_POST, 'id');
+                //$id = filter_input(INPUT_POST, 'id');
                 
-                $_SESSION['id'] = $id;
+               // $_SESSION['id'] = $id;
 
 
                 $sql = "SELECT * FROM cliente WHERE id=" . $id;
@@ -292,17 +328,24 @@ tr {
 					  </table>            
 					   </div>";
                 }
-                ?>
+          ?>
+		  
+
 			
 			<br/><br/><br/>
 			<div id="actions" class="row" align="right">
 			<div class="col-md-11">			
 			<a href="buscar.php"><button type="button" class="btn btn-secondary"><img src="img/voltar_icon.png" alt="Academia" width="25"> Voltar </button></a>
-			<a href="ficha.php"><button type="button" class="btn btn-primary">Criar ficha <img src="img/ficha_icon.png" alt="Academia" width="25"></button></a>
-			<a href="cadAnamnese.php"><button type="button" class="btn btn-primary">Criar anamnese <img src="img/ficha_icon.png" alt="Academia" width="25"></button></a>
+			<a href="visualizar_ficha.php"><button type="button" class="btn btn-info"> Visualizar anamnese </button></a>
+			<?php
+				if(isset($_SESSION['prof'])){
+				echo"<a href='ficha.php'><button type='button' class='btn btn-primary'> Criar ficha <img src='img/ficha_icon.png' alt='Academia' width='25'></button></a>";
+				}
+			?>
 			</div>
 			</div>
                    
-
+			<br/><br/>
+			
     </body>
 </html>

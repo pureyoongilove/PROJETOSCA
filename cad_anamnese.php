@@ -2,6 +2,7 @@
 
 include ("conexao.php");
 
+$idusu = $_SESSION['idusu'];
 $con = $_SESSION['con'];
 
 $peso = filter_input(INPUT_POST,'peso',FILTER_SANITIZE_NUMBER_FLOAT);
@@ -77,16 +78,16 @@ $query = "INSERT INTO `anamnese` ( `peso`, `altura`,  `fuma`, `bebe`, `hstrabalh
         . " `horas_sono`, `problema_familia`, `familia_qual`, `doenca`, `doenca_qual`, `cirurgia`, `cirurgia_qual`, `medicamento`, `medi_qual`,"
         . " `medi_quant`, `estresse`, `dor`, `dor_qual`, `dor_local`, `alergia`, `alergia_qual`, `restri_exerc`, `restric_qual`, `objetivo`,"
         . " `id_cliente`) VALUES ( '$peso', '$altura', '$fuma', '$bebe', '$hstrab', '$faz_exer', '$exer_qual', '$horas_sono', '$problema_familia', '$familia_qual', '$doenca', '$doenca_qual', '$cirurgia', "
-        . "'$cirurgia_qual', '$medicamento', '$medi_qual', '$medi_quant', '$estresse', '$dor', '$dor_qual', '$dor_local', '$alergia', '$alergia_qual', '$restri_exercicio', '$restric_qual', '$objetivo', '5');";
+        . "'$cirurgia_qual', '$medicamento', '$medi_qual', '$medi_quant', '$estresse', '$dor', '$dor_qual', '$dor_local', '$alergia', '$alergia_qual', '$restri_exercicio', '$restric_qual', '$objetivo', '$idusu');";
 
   $sql = mysqli_query($con,$query);     
 
 if( !$sql ){
-        //header("Location:cadAnamnese.php?cadastro=false");
+        header("Location:indexAluno.php?cadastro=false");
         exit;
     }
 
     //se tudo deu certo, redireciona pra exibe.php com alteracao igual a true
-    //header("Location:cadAnamnese.php?cadastro=true");
+    header("Location:indexAluno.php?cadastro=true");
 
 ?>  

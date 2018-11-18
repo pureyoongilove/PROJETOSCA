@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.1
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 14-Nov-2018 às 13:43
--- Versão do servidor: 10.1.33-MariaDB
--- PHP Version: 7.2.6
+-- Generation Time: 15-Nov-2018 às 00:39
+-- Versão do servidor: 10.1.35-MariaDB
+-- versão do PHP: 7.2.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -59,13 +59,6 @@ CREATE TABLE `anamnese` (
   `id_cliente` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Extraindo dados da tabela `anamnese`
---
-
-INSERT INTO `anamnese` (`id_anamnese`, `peso`, `altura`, `fuma`, `bebe`, `hstrabalho`, `faz_exercicio`, `exercicio_qual`, `horas_sono`, `problema_familia`, `familia_qual`, `doenca`, `doenca_qual`, `cirurgia`, `cirurgia_qual`, `medicamento`, `medi_qual`, `medi_quant`, `estresse`, `dor`, `dor_qual`, `dor_local`, `alergia`, `alergia_qual`, `restri_exerc`, `restric_qual`, `objetivo`, `id_cliente`) VALUES
-(2, 0, 0, 'sim', 'sim', '', 'sim', 'nenhum', '', 'sim', 'n  sei qm', 'sim', 'renite', 'sim', 'boca', 'sim', 'depre', '', 'muito', 'sim', 'preguica', 'em tds', 'sim', 'renite tbm', 'sim', 'claroooo', ' ,  ,  , Cond. FÃ­sico, Convivio Social,  ,  ', 5);
-
 -- --------------------------------------------------------
 
 --
@@ -81,20 +74,9 @@ CREATE TABLE `cliente` (
   `sexo` varchar(1) NOT NULL,
   `endereco` varchar(150) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `telefone` varchar(12) NOT NULL,
-  `data_cadastro` date NOT NULL,
-  `senha` varchar(20) NOT NULL
+  `telefone` varchar(20) NOT NULL,
+  `data_cadastro` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Extraindo dados da tabela `cliente`
---
-
-INSERT INTO `cliente` (`id`, `nome`, `cpf`, `rg`, `data_nas`, `sexo`, `endereco`, `email`, `telefone`, `data_cadastro`, `senha`) VALUES
-(5, 'jeon', '12345', '54854', '1997-02-04', 'm', 'avenida 202', 'jeonggukk@gmail.com', '40028922', '0000-00-00', '123'),
-(6, 'jimin', '54321', '854652', '1998-10-10', 'm', 'avenida 502', 'jimin@gmail.com', '21548875', '0000-00-00', '123'),
-(7, 'rose', '44212', '22154', '1995-03-11', 'f', 'avenida 412', 'rose@gmail.com', '8847597', '0000-00-00', '123'),
-(18, 'seok', '216.549.494-9', '96 494 415-6', '0000-00-00', 'M', 'em vÃ¡rios lugares', 'caldeirao@gmail.com', '(40) 0289-22', '2018-11-10', '123');
 
 -- --------------------------------------------------------
 
@@ -113,16 +95,6 @@ CREATE TABLE `ficha` (
   `bloco` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Extraindo dados da tabela `ficha`
---
-
-INSERT INTO `ficha` (`id_ficha`, `usuario`, `exercicio`, `serie`, `repeticao`, `carga`, `id_professor`, `bloco`) VALUES
-(6, 5, 'zumba', 5, 4, 6, 3, 1),
-(8, 5, 'musculaÃ§Ã£o', 4, 5, 4, 3, 2),
-(9, 5, 'aerÃ³bica', 7, 4, 2, 3, 3),
-(10, 5, 'balÃ©', 3, 7, 8, 3, 4);
-
 -- --------------------------------------------------------
 
 --
@@ -135,16 +107,6 @@ CREATE TABLE `login` (
   `senha` varchar(16) NOT NULL,
   `privilegio` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Extraindo dados da tabela `login`
---
-
-INSERT INTO `login` (`id`, `cpf`, `senha`, `privilegio`) VALUES
-(1, '12345', '123', 1),
-(3, '98765', '123', 2),
-(4, '65789', '123', 3),
-(5, '545.777.777-77', '455', 2);
 
 -- --------------------------------------------------------
 
@@ -175,16 +137,8 @@ CREATE TABLE `professor` (
   `endereco` varchar(150) NOT NULL,
   `cargo` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `telefone` varchar(50) NOT NULL,
-  `senha` varchar(100) NOT NULL
+  `telefone` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Extraindo dados da tabela `professor`
---
-
-INSERT INTO `professor` (`id`, `nome`, `cpf`, `rg`, `data_nasc`, `sexo`, `endereco`, `cargo`, `email`, `telefone`, `senha`) VALUES
-(3, 'lisa', '98765', '44216', '1993-05-02', 'f', 'centro', 'prof de zumba', 'lisaaa@gmail.com', '44541121', '123\r\n');
 
 --
 -- Indexes for dumped tables
@@ -241,25 +195,25 @@ ALTER TABLE `professor`
 -- AUTO_INCREMENT for table `anamnese`
 --
 ALTER TABLE `anamnese`
-  MODIFY `id_anamnese` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_anamnese` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `ficha`
 --
 ALTER TABLE `ficha`
-  MODIFY `id_ficha` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_ficha` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `login`
 --
 ALTER TABLE `login`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `mensalidade`
@@ -271,7 +225,7 @@ ALTER TABLE `mensalidade`
 -- AUTO_INCREMENT for table `professor`
 --
 ALTER TABLE `professor`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables

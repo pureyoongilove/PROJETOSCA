@@ -17,7 +17,6 @@ if(isset($_SESSION['prof'])){
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!------- estilo NAVBAR --------->
 	<link rel="stylesheet" type="text/css" href="css/style.css"/>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<!------- estilo CARROCEL ------->
 	<link rel="stylesheet" href="css/bootstrap.css">
 	
@@ -37,17 +36,35 @@ if(isset($_SESSION['prof'])){
 				<a>
 				  <img src="img/logoNav.png" alt="logo" style="width:20px">
 				</a>
-			<a href="indexProf.php" class="active">Home</a>			
-			<a href="buscar.php">Gerenciar alunos</a>									
-			<a href="inadimplentes.php">Alunos inadimplentes</a>
-			<a href="pagamento.php">Pagamentos</a>
-			<a href="cadAluno.php">Cadastrar aluno</a>
-			<a href="javascript:void(0);" class="icon" onclick="myFunction()">
-				<i class="fa fa-bars"></i>	
-			<div class="topnav" id="iconNav">			
-				<a href="sair.php"><img src="img/sair_icon.png" alt="Academia" width="25"> Sair</a>
-			</div>	
-			</a>
+			<?php
+			if(isset($_SESSION['adm'])){
+				echo"<a href='indexAdm.php' class='active'>Home</a>			
+			<a href='buscar.php'>Gerenciar alunos</a>
+			<a href='busca_prof.php'>Gerenciar professores</a>			
+			<a href='inadimplentes.php'>Alunos inadimplentes</a>
+			<a href='pagamento.php'>Pagamentos</a>
+			<a href='cadAluno.php'>Cadastrar aluno</a>
+			<a href='cadProf.php'>Cadastrar professor</a>
+			<a href='sair.php'><img src='img/sair_icon.png' alt='Academia' width='25'> Sair</a>
+			<a href='javascript:void(0);' class='icon' onclick='myFunction()'>
+			<img src='img/bars_icon.png' alt='Academia' width='25'>			
+			</a>";
+			}
+			if(isset($_SESSION['prof'])){
+				echo"<a href='indexProf.php' class='active'>Home</a>			
+			<a href='buscar.php'>Gerenciar alunos</a>									
+			<a href='inadimplentes.php'>Alunos inadimplentes</a>
+			<a href='pagamento.php'>Pagamentos</a>
+			<a href='cadAluno.php'>Cadastrar aluno</a>
+			<a href='javascript:void(0);' class='icon' onclick='myFunction()'>
+			<img src='img/bars_icon.png' alt='Academia' width='25'>
+			<div class='topnav' id='iconNav'>			
+				<a href='sair.php'><img src='img/sair_icon.png' alt='Academia' width='25'> Sair</a>
+			</div>
+			</a>";
+				
+			}				
+			?>
 	    </div>
 		
 		<!---------------------------- CAROUSEL ---------------------------->
@@ -61,7 +78,7 @@ if(isset($_SESSION['prof'])){
   
   		<div class="carousel-inner">
     		<div class="carousel-item active">
-      			<img src="img/gym1.jpg" alt="Academia" width="1100" height="500">
+      			<img src="img/gymmProf.png" alt="Academia" width="1100" height="500">
     		</div>
     		<div class="carousel-item">
       			<img src="img/gym2.jpg" alt="Academia" width="1100" height="500">
@@ -80,7 +97,7 @@ if(isset($_SESSION['prof'])){
 	</div>		
 
 		<!---------------------------- BLOCOS DE TEXTO/IMAGEM ---------------------------->
-<div class="serives-agile py-5 border-top" id="services">
+	<div class="serives-agile py-5 border-top" id="services">
 		<div class="container py-xl-5 py-lg-3">
 			<div class="row support-bottom text-center">
 				<div class="col-md-4 support-grid">
@@ -96,7 +113,7 @@ if(isset($_SESSION['prof'])){
 						<img src="img/conheca.png" alt="logo" style="width:70px">
 					</a>
 					<h5 class="text-dark text-uppercase mt-4 mb-3">Promoções</h5>
-					<p>Confira as promoções especiais feitas para você.</p>
+					<p>Confira nossos preços.</p>
 					<a href="#section2"><button id="botao" class="button button1">Clique aqui</button></a>
 				</div>
 				<div class="col-md-4 support-grid">
@@ -112,16 +129,14 @@ if(isset($_SESSION['prof'])){
 			
 			<div id="section1" class="container-fluid bg-link" style="padding-top:70px;padding-bottom:0.5px">
 		  <h1>Conheça</h1>
-		  <br/>
+		  <br/><br/>
 		  <img src="img/gym5.jpg" class="img-fluid" style="width:355px">
 		  <img src="img/gym6.jpg" class="img-fluid" style="width:355px">
 		  <img src="img/gym7.jpg" class="img-fluid" style="width:355px">
 		  <br/><br/>
-		  <h6>Somos uma academia tradicional localizada entre os bairros Flamengo e Botafogo com mais de 20 anos no mercado, 
-		  sempre trabalhando para criar relacionamentos mais próximos com nossos alunos e fazer da nossa academia uma extensão da sua casa. 
-		  Trabalhar pela saúde e pela melhoria da qualidade de vida das pessoas é a essência da Max Forma. 
-		  Aqui você pode realizar todo tipo de atividade e manter-se completamente em forma, trabalhando tanto seu corpo quanto sua mente.</h>
-		  <br/><br/>
+		  <h5>Visamos pelo bom atendimento ao cliente e qualidade de nossas aulas e equipamentos.  
+		  Aqui você pode manter-se completamente em forma, trabalhando tanto seu corpo quanto sua mente. </h5>
+		  <br/>
 		  <div class="container">
 	  		<br/>
 	  		<div class="card">
@@ -138,8 +153,46 @@ if(isset($_SESSION['prof'])){
 	  		</div>
 		</div>		  
 		  </div>
+		  
+		<div id="section2" class="container-fluid bg-link" style="padding-top:70px;padding-bottom:0.5px">
+		  <h1>Promoções</h1>
+		  <br/><br/>
+<div class="columns">
+  <ul class="price">
+    <li class="header">Pacotes</li>
+    <li class="grey">A partir de R$35,00 / Mês</li>
+    <li>Musculação</li>
+    <li>Aeróbica</li>
+    <li>Zumba</li>  
+  </ul>
+  <br/><br/>
+</div>
 
-		<div id="section3" class="container-fluid bg-link" style="padding-top:70px;padding-bottom:0.5px">
+<div class="columns">
+  <ul class="price">
+    <li class="header" style="background-color:#333">Pacotes</li>
+    <li class="grey">A partir de R$45,00 / Mês</li>
+    <li>Musculação</li>
+    <li>Aeróbica</li>
+    <li>Zumba</li>  
+  </ul>
+  <br/><br/>
+</div>
+
+<div class="columns">
+  <ul class="price">
+    <li class="header">Avulsas</li>
+    <li class="grey">A partir de R$10,00</li>
+    <li>Musculação</li>
+    <li>Aeróbica</li>
+    <li>Zumba</li>  
+  </ul>
+  <br/><br/>
+</div>		  
+        </div>       
+	
+		<div id="section3" class="container-fluid bg-link" style="padding-top:70px;padding-bottom:0.5px">		  
+		  <br/>
 		  <h1>Contatos e Localização</h1>
 		  <br/>
 		<div class="row support-bottom text-left">
@@ -169,7 +222,8 @@ if(isset($_SESSION['prof'])){
 		</div>
 		</div></div></div>
 	
-		<!---------------------------- SCRIPT CAROUSEL ---------------------------->
+	
+		<!---------------------------- SCRIPT CARROCEL ---------------------------->
 		<script src="jquery/dist/jquery.js"></script>
         <script src="popper.js/dist/popper.min.js"></script>
         <script src="js/bootstrap.js"></script>
@@ -186,12 +240,12 @@ if(isset($_SESSION['prof'])){
 		   }
 		}
 	</script>
-	
-	<!---------------------------- FOOTER ---------------------------->	
+
+		<!---------------------------- FOOTER ---------------------------->	
 	<div class="footer">
 		<p>Sistema para Controle de Academia - 2018 | Project by: Aline, Guilherme e Laura | IM3A</p>
 	</div>
 	
 	</body>
 	
-</html>
+</html>		

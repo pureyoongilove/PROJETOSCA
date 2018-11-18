@@ -9,10 +9,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!------- estilo NAVBAR ------->
 	<link rel="stylesheet" type="text/css" href="css/style.css"/>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="css/bootstrap.css">
 	<!------- estilo LOGIN ------->
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="keywords" content="Simple User Login Form Widget Responsive, Login Form Web Template, Flat Pricing Tables, Flat Drop-Downs, Sign-Up Web Templates, Flat Web Templates, Login Sign-up Responsive Web Template, Smartphone Compatible Web Template, Free Web Designs for Nokia, Samsung, LG, SonyErricsson, Motorola Web Design" />
 	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script> 
@@ -29,10 +27,9 @@
 				</a>
 			<a href="index.html" class="active">Home</a>			
 			<a href="javascript:void(0);" class="icon" onclick="myFunction()">
-				<i class="fa fa-bars"></i>
+				<img src="img/bars_icon.png" alt="Academia" width="25">
 			<div class="topnav" id="iconNav">
-				<a href="#"><img src="img/user_icon.png" alt="Academia" width="25"> Login </a>
-				<!-- <a href="#"><i class="fa fa-sign-out"></i> Sair </a> -->
+				<a href="login.php"><img src="img/user_icon.png" alt="Academia" width="25"> Login </a>				
 			</div>	
 			</a>
 	    </div>
@@ -66,6 +63,15 @@
           </label> 
           <input type="password" name="user_senha" class="form-control" />
         </div>
+		<?php
+		if(isset($_GET['status'])){
+			if($_GET['status']== 0){
+				echo "<div class='alert alert-danger'>					
+					  <strong>Dados incorretos!</strong> Por favor tente novamente.
+					  </div>";
+			}
+		}
+		?>
         <input type="submit" value="Login" class="btn"/>
     </form>
   </div>
