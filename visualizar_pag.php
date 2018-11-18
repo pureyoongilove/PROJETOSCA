@@ -43,6 +43,13 @@ body{
 label, h2 {
 	color:white;
 } 
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid #ddd;
+}
 </style>
 </head>
 
@@ -108,7 +115,7 @@ label, h2 {
 	<input type="text" class="form-control" name="busca" maxlength="14" OnKeyPress="formatar('###.###.###-##', this)" required>
 	<br/><br/>
 	<button class="btn btn-success btn-xs" type="submit" name="Buscar"> Verificar pagamentos <img src="img/ok_icon.png" alt="Academia" width="25"></button>
-	<a href="pagamento.php"><button type="button" class="btn btn-danger btn-xs"> Calcelar <img src="img/cancel_icon.png" alt="Academia" width="18"></button>
+	<a href="pagamento.php"><button type="button" class="btn btn-danger btn-xs"> Calcelar <img src="img/cancel_icon.png" alt="Academia" width="18"></button></a>
   </div>
 </div>
 </form>
