@@ -20,8 +20,18 @@ if(isset($_SESSION['prof'])|| isset($_SESSION['adm'])){
 	<link rel="stylesheet" href="css/bootstrap.css">	
 	<link rel="stylesheet" href="css/styleCad.css">
 	<!------- mascara FORMULARIO ------->
-	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script> -->
+<script>
+function formatar(mascara, documento){
+  var i = documento.value.length;
+  var saida = mascara.substring(0,1);
+  var texto = mascara.substring(i)
+  
+  if (texto.substring(0,1) != saida){
+            documento.value += texto.substring(0,1);
+  }
+  
+}
+</script>
 
 <style>
 body{
@@ -118,12 +128,12 @@ label, h2 {
 
     <div class="form-group col-md-2">
       <label for="cpf">CPF</label>
-      <input type="text" class="form-control" name="cpf" id="cpf" placeholder="Ex.:000.000.000-00" required>
+      <input type="text" class="form-control" name="cpf" maxlength="14" OnKeyPress="formatar('###.###.###-##', this)" placeholder="Ex.:000.000.000-00" required>
     </div>
     
     <div class="form-group col-md-2">
       <label for="rg">RG</label>
-      <input type="text" class="form-control" name="rg" id="rg" placeholder="Ex.:00 000 000-0" required>
+      <input type="text" class="form-control" name="rg" maxlength="12" OnKeyPress="formatar('##.###.###-#', this)" placeholder="Ex.:00 000 000-0" required>
     </div>    
   </div>
   
@@ -135,7 +145,7 @@ label, h2 {
     
     <div class="form-group col-md-3">
       <label for="telefone">Telefone</label>
-      <input type="text" class="form-control" name="telefone" id="telefone" placeholder="Ex.:(00) 0000-0000" required>
+      <input type="text" class="form-control" name="telefone" maxlength="13" OnKeyPress="formatar('##-#####-####', this)" placeholder="Ex.:(00) 0000-0000" required>
     </div>
 	
 	<div class="form-group col-md-3">
@@ -153,13 +163,6 @@ label, h2 {
     </div>
   </div>
 </form>	 
- 
- <!------------ MÁSCARA FORM ------------->
- <script type="text/javascript">
-    $("#telefone").mask("(00) 0000-0000");
-	$("#cpf").mask("000.000.000-00");
-	$("#rg").mask("00 000 000-0");
- </script>
 
 	</body>
 	

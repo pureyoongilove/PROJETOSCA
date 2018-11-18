@@ -15,6 +15,19 @@
 	<meta name="keywords" content="Simple User Login Form Widget Responsive, Login Form Web Template, Flat Pricing Tables, Flat Drop-Downs, Sign-Up Web Templates, Flat Web Templates, Login Sign-up Responsive Web Template, Smartphone Compatible Web Template, Free Web Designs for Nokia, Samsung, LG, SonyErricsson, Motorola Web Design" />
 	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script> 
 	<link rel="stylesheet" href="css/style.css" type="text/css" media="all">
+	<!------- mascara FORMULARIO ------->
+<script>
+function formatar(mascara, documento){
+  var i = documento.value.length;
+  var saida = mascara.substring(0,1);
+  var texto = mascara.substring(i)
+  
+  if (texto.substring(0,1) != saida){
+            documento.value += texto.substring(0,1);
+  }
+  
+}
+</script>
 	
 </head>
 
@@ -55,13 +68,13 @@
           <label class="label-control">
             <span><img src="img/login1_icon.png" alt="Academia" width="18">  Digite seu CPF</span>
           </label>
-          <input type="text" name="user_login" class="form-control" />
+          <input type="text" name="user_login" class="form-control" maxlength="14" OnKeyPress="formatar('###.###.###-##', this)"/>
         </div>
         <div class="form-group">
           <label class="label-control">
             <span><img src="img/login2_icon.png" alt="Academia" width="18">  Digite sua senha</span>
           </label> 
-          <input type="password" name="user_senha" class="form-control" />
+          <input type="password" name="user_senha" class="form-control"/>
         </div>
 		<?php
 		if(isset($_GET['status'])){
